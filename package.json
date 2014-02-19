@@ -1,0 +1,40 @@
+{
+  "name": "cached",
+  "version": "1.0.0",
+  "description": "Simple access to a cache",
+  "main": "lib/cached.js",
+  "keywords": [
+    "memcached",
+    "stampede",
+    "cache"
+  ],
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/groupon/node-cached.git"
+  },
+  "author": {
+    "name": "Jan Krems",
+    "email": "jan.krems@groupon.com>"
+  },
+  "publishConfig": {
+    "license": {
+      "exclude": [
+        "test"
+      ]
+    }
+  },
+  "dependencies": {
+    "underscore": "~1.4.4",
+    "q": "~0.9.7",
+    "memcached": "~0.2.0"
+  },
+  "devDependencies": {
+    "coffee-script-redux": "2.0.0-beta7",
+    "expect.js": "0.2.0",
+    "mocha": "1.7.4",
+    "npub": "0.0.5"
+  }
+}
