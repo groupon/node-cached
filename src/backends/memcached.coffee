@@ -47,18 +47,22 @@ class MemcachedBackend
   get: (key, callback) ->
     @client.get key, (err, answer) ->
       answer = null if answer == false
-      if err? then callback(err) else callback(null, answer)
+      if err? then callback(err) else callback(noErr, answer)
 
   set: (key, value, options, callback) ->
     @client.set key, value, options.expire, (err, ok) ->
-      if err? then callback(err) else callback(null, value)
+      if err? then callback(err) else callback(noErr, value)
 
   unset: (key, callback) ->
-    delete @cache[key]
-    callback(null) if callback?
-    null
+    @client.del key, (err, ok) ->
+      if callback
+        if err? then callback(err) else callback(noErr, null)
+      else
+        err ? null
 
   end: ->
     @client.end()
 
 module.exports = MemcachedBackend
+
+noErr = null
