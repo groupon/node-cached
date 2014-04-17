@@ -155,6 +155,11 @@ class Cache
       # Return the value even if it's stale, we want the result ASAP
       wrappedValue?.d ? @staleOrPending[key]
 
-    @getWrapped(key).then(verifyFreshness).nodeify cb
+    handleError = (error) ->
+      # we should let the refreshValue method work if getWrapped has problems
+      # tracking backend errors should be done with wrapping your backend clients
+      return null
+
+    @getWrapped(key).catch(handleError).then(verifyFreshness).nodeify cb
 
 module.exports = Cache
