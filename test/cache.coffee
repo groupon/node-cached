@@ -148,9 +148,6 @@ describe 'Cache', ->
             expect(data).to.be 'fresh cats'
             done()
 
-          obj =
-            errorGenerator: (callback) -> callback(new Error('backend troubles'))
-
-          bond(cache, 'getWrapped').return(Q.npost(obj, "errorGenerator"))
+          bond(cache, 'getWrapped').return Q.reject new Error('backend troubles')
 
           cache.getOrElse 'bad_get', valueGenerator, freshFor: 5, theCallback
