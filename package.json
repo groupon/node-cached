@@ -32,6 +32,7 @@
     "memcached": "~0.2.0"
   },
   "devDependencies": {
+    "bondjs": "~1.0.0",
     "coffee-script-redux": "2.0.0-beta7",
     "expect.js": "0.2.0",
     "mocha": "1.7.4",

@@ -1,9 +1,9 @@
 
 expect = require 'expect.js'
+bond = require 'bondjs'
 
 Q = require 'q'
 {defaults} = require 'underscore'
-
 Cache = require '../lib/cache'
 cached = require '../lib/cached'
 
@@ -138,3 +138,19 @@ describe 'Cache', ->
             done()
 
           cache.getOrElse 'bad_keys', errorGenerator, freshFor: 1, theCallback
+
+        it 'handles thrown get errors by falling back on the value refresher', (done) ->
+          valueGenerator = cached.deferred (cb) ->
+            cb null, 'fresh cats'
+
+          theCallback = (err, data) ->
+            expect(err).to.be null
+            expect(data).to.be 'fresh cats'
+            done()
+
+          obj =
+            errorGenerator: (callback) -> callback(new Error('backend troubles'))
+
+          bond(cache, 'getWrapped').return(Q.npost(obj, "errorGenerator"))
+
+          cache.getOrElse 'bad_get', valueGenerator, freshFor: 5, theCallback
