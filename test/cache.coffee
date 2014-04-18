@@ -148,6 +148,19 @@ describe 'Cache', ->
             expect(data).to.be 'fresh cats'
             done()
 
-          bond(cache, 'getWrapped').return Q.reject new Error('backend troubles')
+          bond(cache, 'getWrapped').return Q.reject new Error('backend get troubles')
 
           cache.getOrElse 'bad_get', valueGenerator, freshFor: 5, theCallback
+
+        it 'handles thrown set errors by falling back on the generated value', (done) ->
+          valueGenerator = cached.deferred (cb) ->
+            cb null, 'generated bunnies'
+
+          theCallback = (err, data) ->
+            expect(err).to.be null
+            expect(data).to.be 'generated bunnies'
+            done()
+
+          bond(cache, 'set').return Q.reject new Error('backend set troubles')
+
+          cache.getOrElse 'bad_set', valueGenerator, freshFor: 5, theCallback
