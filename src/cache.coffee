@@ -133,10 +133,7 @@ class Cache
     opts = @prepareOptions opts
 
     refreshValue = =>
-      generatedValue = if 'function' is typeof val
-        val()
-      else
-        val
+      generatedValue = toPromise(val)
 
       @set(rawKey, generatedValue, opts).then(
         (rawValue) =>
