@@ -133,14 +133,18 @@ class Cache
     opts = @prepareOptions opts
 
     refreshValue = =>
-      @set(rawKey, val, opts).then(
+      generatedValue = toPromise(val)
+
+      @set(rawKey, generatedValue, opts).then(
         (rawValue) =>
           delete @staleOrPending[key]
           rawValue?.d ? null
 
         (err) =>
+          # return generated value instead of error
+          # tracking backend errors should be done with wrapping your backend clients
           delete @staleOrPending[key]
-          Q.reject err
+          generatedValue ? null
       )
 
     verifyFreshness = (wrappedValue) =>
