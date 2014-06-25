@@ -1,3 +1,7 @@
+v2.0.3
+------
+* Pin the memcached version pre-memory leak - @jkrems #6
+
 v2.0.2
 ------
 * Fix bug where backend errors while caching made getOrElse fail - @Kofia5 #4
