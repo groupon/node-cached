@@ -30,7 +30,7 @@
   "dependencies": {
     "underscore": "~1.4.4",
     "q": "~0.9.7",
-    "memcached": "~0.2.0"
+    "memcached": "0.2.7"
   },
   "devDependencies": {
     "bondjs": "~1.0.0",
