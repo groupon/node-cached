@@ -1,3 +1,10 @@
+v3.0.0
+------
+Upgrading to this version changes the key hashing.
+This means that it can potentially invalidate your cache entirely.
+
+* Update memcached package to 2.0.0 - @khoomeister #7
+
 v2.0.3
 ------
 * Pin the memcached version pre-memory leak - @jkrems #6
