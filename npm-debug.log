@@ -1,0 +1,690 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/opt/nvm/v0.10.33/bin/node',
+1 verbose cli   '/usr/local/opt/nvm/v0.10.33/bin/npm',
+1 verbose cli   'install' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.33
+4 verbose node symlink /usr/local/opt/nvm/v0.10.33/bin/node
+5 verbose readDependencies using package.json deps
+6 verbose install where, deps [ '/Users/kofi/thePoints/node-cached',
+6 verbose install   [ 'lodash',
+6 verbose install     'memcached',
+6 verbose install     'q',
+6 verbose install     'bondjs',
+6 verbose install     'coffee-script',
+6 verbose install     'expect.js',
+6 verbose install     'mocha',
+6 verbose install     'npub' ] ]
+7 info preinstall cached@3.0.0
+8 verbose readDependencies using package.json deps
+9 verbose cache add [ 'lodash@~2.4.1', null ]
+10 verbose cache add name=undefined spec="lodash@~2.4.1" args=["lodash@~2.4.1",null]
+11 verbose parsed url { protocol: null,
+11 verbose parsed url   slashes: null,
+11 verbose parsed url   auth: null,
+11 verbose parsed url   host: null,
+11 verbose parsed url   port: null,
+11 verbose parsed url   hostname: null,
+11 verbose parsed url   hash: null,
+11 verbose parsed url   search: null,
+11 verbose parsed url   query: null,
+11 verbose parsed url   pathname: 'lodash@~2.4.1',
+11 verbose parsed url   path: 'lodash@~2.4.1',
+11 verbose parsed url   href: 'lodash@~2.4.1' }
+12 verbose cache add [ 'memcached@~2.0.0', null ]
+13 verbose cache add name=undefined spec="memcached@~2.0.0" args=["memcached@~2.0.0",null]
+14 verbose parsed url { protocol: null,
+14 verbose parsed url   slashes: null,
+14 verbose parsed url   auth: null,
+14 verbose parsed url   host: null,
+14 verbose parsed url   port: null,
+14 verbose parsed url   hostname: null,
+14 verbose parsed url   hash: null,
+14 verbose parsed url   search: null,
+14 verbose parsed url   query: null,
+14 verbose parsed url   pathname: 'memcached@~2.0.0',
+14 verbose parsed url   path: 'memcached@~2.0.0',
+14 verbose parsed url   href: 'memcached@~2.0.0' }
+15 verbose cache add [ 'q@~0.9.7', null ]
+16 verbose cache add name=undefined spec="q@~0.9.7" args=["q@~0.9.7",null]
+17 verbose parsed url { protocol: null,
+17 verbose parsed url   slashes: null,
+17 verbose parsed url   auth: null,
+17 verbose parsed url   host: null,
+17 verbose parsed url   port: null,
+17 verbose parsed url   hostname: null,
+17 verbose parsed url   hash: null,
+17 verbose parsed url   search: null,
+17 verbose parsed url   query: null,
+17 verbose parsed url   pathname: 'q@~0.9.7',
+17 verbose parsed url   path: 'q@~0.9.7',
+17 verbose parsed url   href: 'q@~0.9.7' }
+18 verbose cache add [ 'bondjs@~1.0.0', null ]
+19 verbose cache add name=undefined spec="bondjs@~1.0.0" args=["bondjs@~1.0.0",null]
+20 verbose parsed url { protocol: null,
+20 verbose parsed url   slashes: null,
+20 verbose parsed url   auth: null,
+20 verbose parsed url   host: null,
+20 verbose parsed url   port: null,
+20 verbose parsed url   hostname: null,
+20 verbose parsed url   hash: null,
+20 verbose parsed url   search: null,
+20 verbose parsed url   query: null,
+20 verbose parsed url   pathname: 'bondjs@~1.0.0',
+20 verbose parsed url   path: 'bondjs@~1.0.0',
+20 verbose parsed url   href: 'bondjs@~1.0.0' }
+21 verbose cache add name="lodash" spec="~2.4.1" args=["lodash","~2.4.1"]
+22 verbose parsed url { protocol: null,
+22 verbose parsed url   slashes: null,
+22 verbose parsed url   auth: null,
+22 verbose parsed url   host: null,
+22 verbose parsed url   port: null,
+22 verbose parsed url   hostname: null,
+22 verbose parsed url   hash: null,
+22 verbose parsed url   search: null,
+22 verbose parsed url   query: null,
+22 verbose parsed url   pathname: '~2.4.1',
+22 verbose parsed url   path: '~2.4.1',
+22 verbose parsed url   href: '~2.4.1' }
+23 verbose addNamed [ 'lodash', '~2.4.1' ]
+24 verbose addNamed [ null, '>=2.4.1-0 <2.5.0-0' ]
+25 verbose cache add name="memcached" spec="~2.0.0" args=["memcached","~2.0.0"]
+26 verbose parsed url { protocol: null,
+26 verbose parsed url   slashes: null,
+26 verbose parsed url   auth: null,
+26 verbose parsed url   host: null,
+26 verbose parsed url   port: null,
+26 verbose parsed url   hostname: null,
+26 verbose parsed url   hash: null,
+26 verbose parsed url   search: null,
+26 verbose parsed url   query: null,
+26 verbose parsed url   pathname: '~2.0.0',
+26 verbose parsed url   path: '~2.0.0',
+26 verbose parsed url   href: '~2.0.0' }
+27 verbose addNamed [ 'memcached', '~2.0.0' ]
+28 verbose addNamed [ null, '>=2.0.0-0 <2.1.0-0' ]
+29 verbose cache add name="q" spec="~0.9.7" args=["q","~0.9.7"]
+30 verbose parsed url { protocol: null,
+30 verbose parsed url   slashes: null,
+30 verbose parsed url   auth: null,
+30 verbose parsed url   host: null,
+30 verbose parsed url   port: null,
+30 verbose parsed url   hostname: null,
+30 verbose parsed url   hash: null,
+30 verbose parsed url   search: null,
+30 verbose parsed url   query: null,
+30 verbose parsed url   pathname: '~0.9.7',
+30 verbose parsed url   path: '~0.9.7',
+30 verbose parsed url   href: '~0.9.7' }
+31 verbose addNamed [ 'q', '~0.9.7' ]
+32 verbose addNamed [ null, '>=0.9.7-0 <0.10.0-0' ]
+33 verbose cache add name="bondjs" spec="~1.0.0" args=["bondjs","~1.0.0"]
+34 verbose parsed url { protocol: null,
+34 verbose parsed url   slashes: null,
+34 verbose parsed url   auth: null,
+34 verbose parsed url   host: null,
+34 verbose parsed url   port: null,
+34 verbose parsed url   hostname: null,
+34 verbose parsed url   hash: null,
+34 verbose parsed url   search: null,
+34 verbose parsed url   query: null,
+34 verbose parsed url   pathname: '~1.0.0',
+34 verbose parsed url   path: '~1.0.0',
+34 verbose parsed url   href: '~1.0.0' }
+35 verbose addNamed [ 'bondjs', '~1.0.0' ]
+36 verbose addNamed [ null, '>=1.0.0-0 <1.1.0-0' ]
+37 verbose cache add [ 'coffee-script@~1.8.0', null ]
+38 verbose cache add name=undefined spec="coffee-script@~1.8.0" args=["coffee-script@~1.8.0",null]
+39 verbose parsed url { protocol: null,
+39 verbose parsed url   slashes: null,
+39 verbose parsed url   auth: null,
+39 verbose parsed url   host: null,
+39 verbose parsed url   port: null,
+39 verbose parsed url   hostname: null,
+39 verbose parsed url   hash: null,
+39 verbose parsed url   search: null,
+39 verbose parsed url   query: null,
+39 verbose parsed url   pathname: 'coffee-script@~1.8.0',
+39 verbose parsed url   path: 'coffee-script@~1.8.0',
+39 verbose parsed url   href: 'coffee-script@~1.8.0' }
+40 verbose cache add [ 'expect.js@0.2.0', null ]
+41 verbose cache add name=undefined spec="expect.js@0.2.0" args=["expect.js@0.2.0",null]
+42 verbose parsed url { protocol: null,
+42 verbose parsed url   slashes: null,
+42 verbose parsed url   auth: null,
+42 verbose parsed url   host: null,
+42 verbose parsed url   port: null,
+42 verbose parsed url   hostname: null,
+42 verbose parsed url   hash: null,
+42 verbose parsed url   search: null,
+42 verbose parsed url   query: null,
+42 verbose parsed url   pathname: 'expect.js@0.2.0',
+42 verbose parsed url   path: 'expect.js@0.2.0',
+42 verbose parsed url   href: 'expect.js@0.2.0' }
+43 verbose cache add [ 'mocha@^~2.0.1', null ]
+44 verbose cache add name=undefined spec="mocha@^~2.0.1" args=["mocha@^~2.0.1",null]
+45 verbose parsed url { protocol: null,
+45 verbose parsed url   slashes: null,
+45 verbose parsed url   auth: null,
+45 verbose parsed url   host: null,
+45 verbose parsed url   port: null,
+45 verbose parsed url   hostname: null,
+45 verbose parsed url   hash: null,
+45 verbose parsed url   search: null,
+45 verbose parsed url   query: null,
+45 verbose parsed url   pathname: 'mocha@^~2.0.1',
+45 verbose parsed url   path: 'mocha@^~2.0.1',
+45 verbose parsed url   href: 'mocha@^~2.0.1' }
+46 silly lockFile 257f9ab3-lodash-2-4-1 lodash@~2.4.1
+47 verbose lock lodash@~2.4.1 /Users/kofi/.npm/257f9ab3-lodash-2-4-1.lock
+48 silly lockFile dfc8f739-memcached-2-0-0 memcached@~2.0.0
+49 verbose lock memcached@~2.0.0 /Users/kofi/.npm/dfc8f739-memcached-2-0-0.lock
+50 silly lockFile 9ea2316a-q-0-9-7 q@~0.9.7
+51 verbose lock q@~0.9.7 /Users/kofi/.npm/9ea2316a-q-0-9-7.lock
+52 silly lockFile 4ea17dfe-bondjs-1-0-0 bondjs@~1.0.0
+53 verbose lock bondjs@~1.0.0 /Users/kofi/.npm/4ea17dfe-bondjs-1-0-0.lock
+54 verbose cache add name="coffee-script" spec="~1.8.0" args=["coffee-script","~1.8.0"]
+55 verbose parsed url { protocol: null,
+55 verbose parsed url   slashes: null,
+55 verbose parsed url   auth: null,
+55 verbose parsed url   host: null,
+55 verbose parsed url   port: null,
+55 verbose parsed url   hostname: null,
+55 verbose parsed url   hash: null,
+55 verbose parsed url   search: null,
+55 verbose parsed url   query: null,
+55 verbose parsed url   pathname: '~1.8.0',
+55 verbose parsed url   path: '~1.8.0',
+55 verbose parsed url   href: '~1.8.0' }
+56 verbose addNamed [ 'coffee-script', '~1.8.0' ]
+57 verbose addNamed [ null, '>=1.8.0-0 <1.9.0-0' ]
+58 silly lockFile f37fc738-coffee-script-1-8-0 coffee-script@~1.8.0
+59 verbose lock coffee-script@~1.8.0 /Users/kofi/.npm/f37fc738-coffee-script-1-8-0.lock
+60 verbose cache add name="expect.js" spec="0.2.0" args=["expect.js","0.2.0"]
+61 verbose parsed url { protocol: null,
+61 verbose parsed url   slashes: null,
+61 verbose parsed url   auth: null,
+61 verbose parsed url   host: null,
+61 verbose parsed url   port: null,
+61 verbose parsed url   hostname: null,
+61 verbose parsed url   hash: null,
+61 verbose parsed url   search: null,
+61 verbose parsed url   query: null,
+61 verbose parsed url   pathname: '0.2.0',
+61 verbose parsed url   path: '0.2.0',
+61 verbose parsed url   href: '0.2.0' }
+62 verbose addNamed [ 'expect.js', '0.2.0' ]
+63 verbose addNamed [ '0.2.0', '0.2.0' ]
+64 silly lockFile 8bd15c82-expect-js-0-2-0 expect.js@0.2.0
+65 verbose lock expect.js@0.2.0 /Users/kofi/.npm/8bd15c82-expect-js-0-2-0.lock
+66 verbose cache add [ 'npub@0.0.5', null ]
+67 verbose cache add name=undefined spec="npub@0.0.5" args=["npub@0.0.5",null]
+68 verbose parsed url { protocol: null,
+68 verbose parsed url   slashes: null,
+68 verbose parsed url   auth: null,
+68 verbose parsed url   host: null,
+68 verbose parsed url   port: null,
+68 verbose parsed url   hostname: null,
+68 verbose parsed url   hash: null,
+68 verbose parsed url   search: null,
+68 verbose parsed url   query: null,
+68 verbose parsed url   pathname: 'npub@0.0.5',
+68 verbose parsed url   path: 'npub@0.0.5',
+68 verbose parsed url   href: 'npub@0.0.5' }
+69 verbose cache add name="mocha" spec="^~2.0.1" args=["mocha","^~2.0.1"]
+70 verbose parsed url { protocol: null,
+70 verbose parsed url   slashes: null,
+70 verbose parsed url   auth: null,
+70 verbose parsed url   host: null,
+70 verbose parsed url   port: null,
+70 verbose parsed url   hostname: null,
+70 verbose parsed url   hash: null,
+70 verbose parsed url   search: null,
+70 verbose parsed url   query: null,
+70 verbose parsed url   pathname: '^~2.0.1',
+70 verbose parsed url   path: '^~2.0.1',
+70 verbose parsed url   href: '^~2.0.1' }
+71 verbose addNamed [ 'mocha', '^~2.0.1' ]
+72 verbose addNamed [ null, null ]
+73 silly lockFile b9e888b2-mocha-2-0-1 mocha@^~2.0.1
+74 verbose lock mocha@^~2.0.1 /Users/kofi/.npm/b9e888b2-mocha-2-0-1.lock
+75 verbose cache add name="npub" spec="0.0.5" args=["npub","0.0.5"]
+76 verbose parsed url { protocol: null,
+76 verbose parsed url   slashes: null,
+76 verbose parsed url   auth: null,
+76 verbose parsed url   host: null,
+76 verbose parsed url   port: null,
+76 verbose parsed url   hostname: null,
+76 verbose parsed url   hash: null,
+76 verbose parsed url   search: null,
+76 verbose parsed url   query: null,
+76 verbose parsed url   pathname: '0.0.5',
+76 verbose parsed url   path: '0.0.5',
+76 verbose parsed url   href: '0.0.5' }
+77 verbose addNamed [ 'npub', '0.0.5' ]
+78 verbose addNamed [ '0.0.5', '0.0.5' ]
+79 silly lockFile 6aafaa92-npub-0-0-5 npub@0.0.5
+80 verbose lock npub@0.0.5 /Users/kofi/.npm/6aafaa92-npub-0-0-5.lock
+81 silly addNameRange { name: 'lodash', range: '>=2.4.1-0 <2.5.0-0', hasData: false }
+82 silly addNameRange { name: 'memcached',
+82 silly addNameRange   range: '>=2.0.0-0 <2.1.0-0',
+82 silly addNameRange   hasData: false }
+83 silly addNameRange { name: 'q', range: '>=0.9.7-0 <0.10.0-0', hasData: false }
+84 silly addNameRange { name: 'bondjs', range: '>=1.0.0-0 <1.1.0-0', hasData: false }
+85 silly addNameRange { name: 'coffee-script',
+85 silly addNameRange   range: '>=1.8.0-0 <1.9.0-0',
+85 silly addNameRange   hasData: false }
+86 info addNameTag [ 'mocha', '^~2.0.1' ]
+87 verbose request where is /lodash
+88 verbose request registry http://npm-registry.snc1/
+89 verbose request id c6cf32ce3214a251
+90 verbose url raw /lodash
+91 verbose url resolving [ 'http://npm-registry.snc1/', './lodash' ]
+92 verbose url resolved http://npm-registry.snc1/lodash
+93 verbose request where is http://npm-registry.snc1/lodash
+94 info trying registry request attempt 1 at 12:03:34
+95 http GET http://npm-registry.snc1/lodash
+96 verbose request where is /memcached
+97 verbose request registry http://npm-registry.snc1/
+98 verbose url raw /memcached
+99 verbose url resolving [ 'http://npm-registry.snc1/', './memcached' ]
+100 verbose url resolved http://npm-registry.snc1/memcached
+101 verbose request where is http://npm-registry.snc1/memcached
+102 info trying registry request attempt 1 at 12:03:34
+103 http GET http://npm-registry.snc1/memcached
+104 verbose request where is /q
+105 verbose request registry http://npm-registry.snc1/
+106 verbose url raw /q
+107 verbose url resolving [ 'http://npm-registry.snc1/', './q' ]
+108 verbose url resolved http://npm-registry.snc1/q
+109 verbose request where is http://npm-registry.snc1/q
+110 info trying registry request attempt 1 at 12:03:34
+111 http GET http://npm-registry.snc1/q
+112 verbose request where is /bondjs
+113 verbose request registry http://npm-registry.snc1/
+114 verbose url raw /bondjs
+115 verbose url resolving [ 'http://npm-registry.snc1/', './bondjs' ]
+116 verbose url resolved http://npm-registry.snc1/bondjs
+117 verbose request where is http://npm-registry.snc1/bondjs
+118 info trying registry request attempt 1 at 12:03:34
+119 http GET http://npm-registry.snc1/bondjs
+120 verbose request where is /coffee-script
+121 verbose request registry http://npm-registry.snc1/
+122 verbose url raw /coffee-script
+123 verbose url resolving [ 'http://npm-registry.snc1/', './coffee-script' ]
+124 verbose url resolved http://npm-registry.snc1/coffee-script
+125 verbose request where is http://npm-registry.snc1/coffee-script
+126 info trying registry request attempt 1 at 12:03:34
+127 http GET http://npm-registry.snc1/coffee-script
+128 verbose request where is /expect.js
+129 verbose request registry http://npm-registry.snc1/
+130 verbose url raw /expect.js
+131 verbose url resolving [ 'http://npm-registry.snc1/', './expect.js' ]
+132 verbose url resolved http://npm-registry.snc1/expect.js
+133 verbose request where is http://npm-registry.snc1/expect.js
+134 info trying registry request attempt 1 at 12:03:34
+135 http GET http://npm-registry.snc1/expect.js
+136 verbose request where is /mocha
+137 verbose request registry http://npm-registry.snc1/
+138 verbose url raw /mocha
+139 verbose url resolving [ 'http://npm-registry.snc1/', './mocha' ]
+140 verbose url resolved http://npm-registry.snc1/mocha
+141 verbose request where is http://npm-registry.snc1/mocha
+142 info trying registry request attempt 1 at 12:03:34
+143 http GET http://npm-registry.snc1/mocha
+144 verbose request where is /npub
+145 verbose request registry http://npm-registry.snc1/
+146 verbose url raw /npub
+147 verbose url resolving [ 'http://npm-registry.snc1/', './npub' ]
+148 verbose url resolved http://npm-registry.snc1/npub
+149 verbose request where is http://npm-registry.snc1/npub
+150 info trying registry request attempt 1 at 12:03:34
+151 http GET http://npm-registry.snc1/npub
+152 http 200 http://npm-registry.snc1/bondjs
+153 silly registry.get cb [ 200,
+153 silly registry.get   { server: 'nginx/1.5.12',
+153 silly registry.get     date: 'Mon, 17 Nov 2014 18:03:35 GMT',
+153 silly registry.get     'content-type': 'application/json',
+153 silly registry.get     'transfer-encoding': 'chunked',
+153 silly registry.get     connection: 'keep-alive',
+153 silly registry.get     vary: 'Accept',
+153 silly registry.get     'content-encoding': 'gzip' } ]
+154 http 200 http://npm-registry.snc1/coffee-script
+155 silly registry.get cb [ 200,
+155 silly registry.get   { server: 'nginx/1.5.12',
+155 silly registry.get     date: 'Mon, 17 Nov 2014 18:03:35 GMT',
+155 silly registry.get     'content-type': 'application/json',
+155 silly registry.get     'transfer-encoding': 'chunked',
+155 silly registry.get     connection: 'keep-alive',
+155 silly registry.get     vary: 'Accept',
+155 silly registry.get     'content-encoding': 'gzip' } ]
+156 silly addNameRange number 2 { name: 'bondjs', range: '>=1.0.0-0 <1.1.0-0', hasData: true }
+157 silly addNameRange versions [ 'bondjs',
+157 silly addNameRange   [ '0.0.1',
+157 silly addNameRange     '0.0.2',
+157 silly addNameRange     '0.0.3',
+157 silly addNameRange     '0.0.4',
+157 silly addNameRange     '0.0.5',
+157 silly addNameRange     '0.0.6',
+157 silly addNameRange     '0.0.7',
+157 silly addNameRange     '0.0.8',
+157 silly addNameRange     '0.0.9',
+157 silly addNameRange     '0.0.10',
+157 silly addNameRange     '0.0.11',
+157 silly addNameRange     '0.0.13',
+157 silly addNameRange     '0.0.14',
+157 silly addNameRange     '1.0.0',
+157 silly addNameRange     '1.0.1',
+157 silly addNameRange     '1.1.0',
+157 silly addNameRange     '1.1.1',
+157 silly addNameRange     '1.2.0',
+157 silly addNameRange     '1.2.1' ] ]
+158 verbose addNamed [ 'bondjs', '1.0.1' ]
+159 verbose addNamed [ '1.0.1', '1.0.1' ]
+160 silly lockFile ca3ccbeb-bondjs-1-0-1 bondjs@1.0.1
+161 verbose lock bondjs@1.0.1 /Users/kofi/.npm/ca3ccbeb-bondjs-1-0-1.lock
+162 silly addNameRange number 2 { name: 'coffee-script',
+162 silly addNameRange   range: '>=1.8.0-0 <1.9.0-0',
+162 silly addNameRange   hasData: true }
+163 silly addNameRange versions [ 'coffee-script',
+163 silly addNameRange   [ '0.7.1',
+163 silly addNameRange     '0.7.2',
+163 silly addNameRange     '0.9.0',
+163 silly addNameRange     '0.9.1',
+163 silly addNameRange     '0.9.2',
+163 silly addNameRange     '0.9.3',
+163 silly addNameRange     '0.9.4',
+163 silly addNameRange     '0.9.5',
+163 silly addNameRange     '0.9.6',
+163 silly addNameRange     '1.0.0',
+163 silly addNameRange     '1.1.0',
+163 silly addNameRange     '1.1.1',
+163 silly addNameRange     '1.1.2',
+163 silly addNameRange     '1.1.3',
+163 silly addNameRange     '1.2.0',
+163 silly addNameRange     '1.3.0',
+163 silly addNameRange     '1.3.1',
+163 silly addNameRange     '1.3.2',
+163 silly addNameRange     '1.3.3',
+163 silly addNameRange     '1.4.0',
+163 silly addNameRange     '1.5.0',
+163 silly addNameRange     '1.6.0',
+163 silly addNameRange     '1.6.1',
+163 silly addNameRange     '1.6.2',
+163 silly addNameRange     '1.6.3',
+163 silly addNameRange     '1.7.0',
+163 silly addNameRange     '1.7.1',
+163 silly addNameRange     '0.7.0',
+163 silly addNameRange     '1.8.0',
+163 silly addNameRange     '1.0.1' ] ]
+164 verbose addNamed [ 'coffee-script', '1.8.0' ]
+165 verbose addNamed [ '1.8.0', '1.8.0' ]
+166 silly lockFile d0d79082-coffee-script-1-8-0 coffee-script@1.8.0
+167 verbose lock coffee-script@1.8.0 /Users/kofi/.npm/d0d79082-coffee-script-1-8-0.lock
+168 silly lockFile ca3ccbeb-bondjs-1-0-1 bondjs@1.0.1
+169 silly lockFile ca3ccbeb-bondjs-1-0-1 bondjs@1.0.1
+170 silly lockFile 4ea17dfe-bondjs-1-0-0 bondjs@~1.0.0
+171 silly lockFile 4ea17dfe-bondjs-1-0-0 bondjs@~1.0.0
+172 silly lockFile d0d79082-coffee-script-1-8-0 coffee-script@1.8.0
+173 silly lockFile d0d79082-coffee-script-1-8-0 coffee-script@1.8.0
+174 silly lockFile f37fc738-coffee-script-1-8-0 coffee-script@~1.8.0
+175 silly lockFile f37fc738-coffee-script-1-8-0 coffee-script@~1.8.0
+176 http 200 http://npm-registry.snc1/memcached
+177 silly registry.get cb [ 200,
+177 silly registry.get   { server: 'nginx/1.5.12',
+177 silly registry.get     date: 'Mon, 17 Nov 2014 18:03:35 GMT',
+177 silly registry.get     'content-type': 'application/json',
+177 silly registry.get     'transfer-encoding': 'chunked',
+177 silly registry.get     connection: 'keep-alive',
+177 silly registry.get     vary: 'Accept',
+177 silly registry.get     'content-encoding': 'gzip' } ]
+178 silly addNameRange number 2 { name: 'memcached', range: '>=2.0.0-0 <2.1.0-0', hasData: true }
+179 silly addNameRange versions [ 'memcached',
+179 silly addNameRange   [ '0.0.1',
+179 silly addNameRange     '0.0.2',
+179 silly addNameRange     '0.0.3',
+179 silly addNameRange     '0.0.4',
+179 silly addNameRange     '0.0.5',
+179 silly addNameRange     '0.1.0',
+179 silly addNameRange     '0.1.1',
+179 silly addNameRange     '0.1.2',
+179 silly addNameRange     '0.1.3',
+179 silly addNameRange     '0.1.4',
+179 silly addNameRange     '0.1.5',
+179 silly addNameRange     '0.2.0',
+179 silly addNameRange     '0.0.7',
+179 silly addNameRange     '0.0.6',
+179 silly addNameRange     '0.0.8',
+179 silly addNameRange     '0.0.9',
+179 silly addNameRange     '0.0.10',
+179 silly addNameRange     '0.0.11',
+179 silly addNameRange     '0.0.12',
+179 silly addNameRange     '0.2.1',
+179 silly addNameRange     '0.2.2',
+179 silly addNameRange     '0.2.3',
+179 silly addNameRange     '0.2.4',
+179 silly addNameRange     '0.2.5',
+179 silly addNameRange     '0.2.6',
+179 silly addNameRange     '0.2.7',
+179 silly addNameRange     '0.2.8',
+179 silly addNameRange     '1.0.0',
+179 silly addNameRange     '2.0.0' ] ]
+180 verbose addNamed [ 'memcached', '2.0.0' ]
+181 verbose addNamed [ '2.0.0', '2.0.0' ]
+182 silly lockFile 7114931d-memcached-2-0-0 memcached@2.0.0
+183 verbose lock memcached@2.0.0 /Users/kofi/.npm/7114931d-memcached-2-0-0.lock
+184 silly lockFile 7114931d-memcached-2-0-0 memcached@2.0.0
+185 silly lockFile 7114931d-memcached-2-0-0 memcached@2.0.0
+186 silly lockFile dfc8f739-memcached-2-0-0 memcached@~2.0.0
+187 silly lockFile dfc8f739-memcached-2-0-0 memcached@~2.0.0
+188 http 200 http://npm-registry.snc1/lodash
+189 silly registry.get cb [ 200,
+189 silly registry.get   { server: 'nginx/1.5.12',
+189 silly registry.get     date: 'Mon, 17 Nov 2014 18:03:35 GMT',
+189 silly registry.get     'content-type': 'application/json',
+189 silly registry.get     'transfer-encoding': 'chunked',
+189 silly registry.get     connection: 'keep-alive',
+189 silly registry.get     vary: 'Accept',
+189 silly registry.get     'content-encoding': 'gzip' } ]
+190 http 200 http://npm-registry.snc1/npub
+191 silly registry.get cb [ 200,
+191 silly registry.get   { server: 'nginx/1.5.12',
+191 silly registry.get     date: 'Mon, 17 Nov 2014 18:03:35 GMT',
+191 silly registry.get     'content-type': 'application/json',
+191 silly registry.get     'transfer-encoding': 'chunked',
+191 silly registry.get     connection: 'keep-alive',
+191 silly registry.get     vary: 'Accept',
+191 silly registry.get     'content-encoding': 'gzip' } ]
+192 http 200 http://npm-registry.snc1/expect.js
+193 silly registry.get cb [ 200,
+193 silly registry.get   { server: 'nginx/1.5.12',
+193 silly registry.get     date: 'Mon, 17 Nov 2014 18:03:35 GMT',
+193 silly registry.get     'content-type': 'application/json',
+193 silly registry.get     'transfer-encoding': 'chunked',
+193 silly registry.get     connection: 'keep-alive',
+193 silly registry.get     vary: 'Accept',
+193 silly registry.get     'content-encoding': 'gzip' } ]
+194 silly lockFile 4d4ab7ed-stry-snc1-package-npub-0-0-5-tgz http://npm-registry.snc1/package/npub-0.0.5.tgz
+195 verbose lock http://npm-registry.snc1/package/npub-0.0.5.tgz /Users/kofi/.npm/4d4ab7ed-stry-snc1-package-npub-0-0-5-tgz.lock
+196 silly lockFile 9efb77d3-snc1-package-expect-js-0-2-0-tgz http://npm-registry.snc1/package/expect.js-0.2.0.tgz
+197 verbose lock http://npm-registry.snc1/package/expect.js-0.2.0.tgz /Users/kofi/.npm/9efb77d3-snc1-package-expect-js-0-2-0-tgz.lock
+198 silly addNameRange number 2 { name: 'lodash', range: '>=2.4.1-0 <2.5.0-0', hasData: true }
+199 silly addNameRange versions [ 'lodash',
+199 silly addNameRange   [ '0.1.0',
+199 silly addNameRange     '0.2.0',
+199 silly addNameRange     '0.2.1',
+199 silly addNameRange     '0.2.2',
+199 silly addNameRange     '0.3.0',
+199 silly addNameRange     '0.3.1',
+199 silly addNameRange     '0.3.2',
+199 silly addNameRange     '0.4.0',
+199 silly addNameRange     '0.4.1',
+199 silly addNameRange     '0.4.2',
+199 silly addNameRange     '0.5.0-rc.1',
+199 silly addNameRange     '0.5.0',
+199 silly addNameRange     '0.5.1',
+199 silly addNameRange     '0.5.2',
+199 silly addNameRange     '0.6.0',
+199 silly addNameRange     '0.7.0',
+199 silly addNameRange     '0.8.0',
+199 silly addNameRange     '0.8.1',
+199 silly addNameRange     '0.8.2',
+199 silly addNameRange     '0.9.0',
+199 silly addNameRange     '0.9.2',
+199 silly addNameRange     '0.10.0',
+199 silly addNameRange     '1.0.0-rc.1',
+199 silly addNameRange     '1.0.0-rc.3',
+199 silly addNameRange     '1.0.0',
+199 silly addNameRange     '1.0.1',
+199 silly addNameRange     '1.1.0',
+199 silly addNameRange     '1.1.1',
+199 silly addNameRange     '1.2.0',
+199 silly addNameRange     '1.2.1',
+199 silly addNameRange     '1.3.0',
+199 silly addNameRange     '1.3.1',
+199 silly addNameRange     '2.0.0',
+199 silly addNameRange     '2.1.0',
+199 silly addNameRange     '2.2.1',
+199 silly addNameRange     '2.3.0',
+199 silly addNameRange     '2.4.0',
+199 silly addNameRange     '2.4.1',
+199 silly addNameRange     '2.2.0',
+199 silly addNameRange     '0.9.1',
+199 silly addNameRange     '0.6.1',
+199 silly addNameRange     '1.0.0-rc.2' ] ]
+200 verbose addNamed [ 'lodash', '2.4.1' ]
+201 verbose addNamed [ '2.4.1', '2.4.1' ]
+202 silly lockFile 8502be2a-lodash-2-4-1 lodash@2.4.1
+203 verbose lock lodash@2.4.1 /Users/kofi/.npm/8502be2a-lodash-2-4-1.lock
+204 verbose addRemoteTarball [ 'http://npm-registry.snc1/package/npub-0.0.5.tgz',
+204 verbose addRemoteTarball   '06bdb7353a6921187df5e38348da251ffa9c982e' ]
+205 verbose addRemoteTarball [ 'http://npm-registry.snc1/package/expect.js-0.2.0.tgz',
+205 verbose addRemoteTarball   '1028533d2c1c363f74a6796ff57ec0520ded2be1' ]
+206 info retry fetch attempt 1 at 12:03:35
+207 verbose fetch to= /var/folders/qp/t38wn29163504vzb96_ywv38yv8d3k/T/npm-20797-76blj77o/npm-registry.snc1/package/expect.js-0.2.0.tgz
+208 http GET http://npm-registry.snc1/package/expect.js-0.2.0.tgz
+209 info retry fetch attempt 1 at 12:03:35
+210 verbose fetch to= /var/folders/qp/t38wn29163504vzb96_ywv38yv8d3k/T/npm-20797-76blj77o/npm-registry.snc1/package/npub-0.0.5.tgz
+211 silly lockFile 8502be2a-lodash-2-4-1 lodash@2.4.1
+212 silly lockFile 8502be2a-lodash-2-4-1 lodash@2.4.1
+213 http GET http://npm-registry.snc1/package/npub-0.0.5.tgz
+214 silly lockFile 257f9ab3-lodash-2-4-1 lodash@~2.4.1
+215 silly lockFile 257f9ab3-lodash-2-4-1 lodash@~2.4.1
+216 http 200 http://npm-registry.snc1/q
+217 silly registry.get cb [ 200,
+217 silly registry.get   { server: 'nginx/1.5.12',
+217 silly registry.get     date: 'Mon, 17 Nov 2014 18:03:35 GMT',
+217 silly registry.get     'content-type': 'application/json',
+217 silly registry.get     'transfer-encoding': 'chunked',
+217 silly registry.get     connection: 'keep-alive',
+217 silly registry.get     vary: 'Accept',
+217 silly registry.get     'content-encoding': 'gzip' } ]
+218 silly addNameRange number 2 { name: 'q', range: '>=0.9.7-0 <0.10.0-0', hasData: true }
+219 silly addNameRange versions [ 'q',
+219 silly addNameRange   [ '0.0.0',
+219 silly addNameRange     '0.0.1',
+219 silly addNameRange     '0.0.2',
+219 silly addNameRange     '0.0.3',
+219 silly addNameRange     '0.1.0',
+219 silly addNameRange     '0.1.1',
+219 silly addNameRange     '0.1.3',
+219 silly addNameRange     '0.1.4',
+219 silly addNameRange     '0.1.5',
+219 silly addNameRange     '0.1.6',
+219 silly addNameRange     '0.1.7',
+219 silly addNameRange     '0.1.8',
+219 silly addNameRange     '0.1.9',
+219 silly addNameRange     '0.2.0-rc1',
+219 silly addNameRange     '0.2.0',
+219 silly addNameRange     '0.2.1',
+219 silly addNameRange     '0.2.2',
+219 silly addNameRange     '0.2.3',
+219 silly addNameRange     '0.2.4',
+219 silly addNameRange     '0.2.5',
+219 silly addNameRange     '0.2.7',
+219 silly addNameRange     '0.2.8',
+219 silly addNameRange     '0.2.9',
+219 silly addNameRange     '0.3.0',
+219 silly addNameRange     '0.2.10',
+219 silly addNameRange     '0.4.0',
+219 silly addNameRange     '0.4.1',
+219 silly addNameRange     '0.4.2',
+219 silly addNameRange     '0.4.4',
+219 silly addNameRange     '0.5.0',
+219 silly addNameRange     '0.5.1',
+219 silly addNameRange     '0.5.3',
+219 silly addNameRange     '0.6.0',
+219 silly addNameRange     '0.7.1',
+219 silly addNameRange     '0.7.2',
+219 silly addNameRange     '0.8.0',
+219 silly addNameRange     '0.8.2',
+219 silly addNameRange     '0.8.3',
+219 silly addNameRange     '0.8.4',
+219 silly addNameRange     '0.8.5',
+219 silly addNameRange     '0.8.6',
+219 silly addNameRange     '0.8.7',
+219 silly addNameRange     '0.8.8',
+219 silly addNameRange     '0.8.9',
+219 silly addNameRange     '0.8.10',
+219 silly addNameRange     '0.8.11',
+219 silly addNameRange     '0.8.12',
+219 silly addNameRange     '0.9.0',
+219 silly addNameRange     '0.9.1',
+219 silly addNameRange     '0.9.2',
+219 silly addNameRange     '0.9.3',
+219 silly addNameRange     '0.9.4',
+219 silly addNameRange     '0.9.6',
+219 silly addNameRange     '0.9.7',
+219 silly addNameRange     '1.0.0',
+219 silly addNameRange     '1.0.1',
+219 silly addNameRange     '2.0.1',
+219 silly addNameRange     '2.0.0',
+219 silly addNameRange     '2.0.2',
+219 silly addNameRange     '0.9.5',
+219 silly addNameRange     '0.8.1',
+219 silly addNameRange     '0.1.2',
+219 silly addNameRange     '0.2.6',
+219 silly addNameRange     '0.5.2' ] ]
+220 verbose addNamed [ 'q', '0.9.7' ]
+221 verbose addNamed [ '0.9.7', '0.9.7' ]
+222 silly lockFile cc8e51ee-q-0-9-7 q@0.9.7
+223 verbose lock q@0.9.7 /Users/kofi/.npm/cc8e51ee-q-0-9-7.lock
+224 silly lockFile cc8e51ee-q-0-9-7 q@0.9.7
+225 silly lockFile cc8e51ee-q-0-9-7 q@0.9.7
+226 silly lockFile 9ea2316a-q-0-9-7 q@~0.9.7
+227 silly lockFile 9ea2316a-q-0-9-7 q@~0.9.7
+228 http 200 http://npm-registry.snc1/mocha
+229 silly registry.get cb [ 200,
+229 silly registry.get   { server: 'nginx/1.5.12',
+229 silly registry.get     date: 'Mon, 17 Nov 2014 18:03:35 GMT',
+229 silly registry.get     'content-type': 'application/json',
+229 silly registry.get     'transfer-encoding': 'chunked',
+229 silly registry.get     connection: 'keep-alive',
+229 silly registry.get     vary: 'Accept',
+229 silly registry.get     'content-encoding': 'gzip' } ]
+230 silly lockFile b9e888b2-mocha-2-0-1 mocha@^~2.0.1
+231 silly lockFile b9e888b2-mocha-2-0-1 mocha@^~2.0.1
+232 http 200 http://npm-registry.snc1/package/expect.js-0.2.0.tgz
+233 http 200 http://npm-registry.snc1/package/npub-0.0.5.tgz
+234 silly lockFile 4d4ab7ed-stry-snc1-package-npub-0-0-5-tgz http://npm-registry.snc1/package/npub-0.0.5.tgz
+235 silly lockFile 4d4ab7ed-stry-snc1-package-npub-0-0-5-tgz http://npm-registry.snc1/package/npub-0.0.5.tgz
+236 silly lockFile 6aafaa92-npub-0-0-5 npub@0.0.5
+237 silly lockFile 6aafaa92-npub-0-0-5 npub@0.0.5
+238 silly lockFile 9efb77d3-snc1-package-expect-js-0-2-0-tgz http://npm-registry.snc1/package/expect.js-0.2.0.tgz
+239 silly lockFile 9efb77d3-snc1-package-expect-js-0-2-0-tgz http://npm-registry.snc1/package/expect.js-0.2.0.tgz
+240 silly lockFile 8bd15c82-expect-js-0-2-0 expect.js@0.2.0
+241 silly lockFile 8bd15c82-expect-js-0-2-0 expect.js@0.2.0
+242 error notarget No compatible version found: mocha@'^~2.0.1'
+242 error notarget Valid install targets:
+242 error notarget ["0.0.1-alpha1","0.0.1-alpha2","0.0.1-alpha3","0.0.1-alpha4","0.0.1-alpha5","0.0.1-alpha6","0.0.1","0.0.2","0.0.3","0.0.4","0.0.5","0.0.6","0.0.7","0.0.8","0.1.0","0.2.0","0.3.0","0.3.2","0.3.3","0.3.4","0.3.6","0.4.0","0.6.0","0.7.0","0.7.1","0.8.0","0.8.1","0.9.0","0.10.0","0.10.1","0.11.0","0.12.0","0.12.1","0.13.0","1.0.1","1.0.2","1.0.3","1.1.0","1.2.0","1.2.1","1.2.2","1.3.0","1.4.3","1.5.0","1.6.0","1.7.0","1.7.1","1.7.2","1.7.4","1.8.0","1.8.1","1.8.2","1.9.0","1.10.0","1.11.0","1.12.0","1.12.1","1.13.0","1.14.0","1.15.1","1.16.0","1.16.1","1.16.2","1.17.0","1.17.1","1.18.1","1.18.2","1.19.0","1.20.0","1.20.1","1.21.0","1.3.1","1.21.3","1.21.4","1.4.0","0.5.0","1.18.0","1.4.1","0.10.2","1.7.3","1.3.2","1.21.5","1.21.1","0.3.1","1.15.0","2.0.0","0.14.1","2.0.1","0.14.0","1.0.0","1.4.2","1.21.2"]
+242 error notarget
+242 error notarget This is most likely not a problem with npm itself.
+242 error notarget In most cases you or one of your dependencies are requesting
+242 error notarget a package version that doesn't exist.
+243 error System Darwin 13.4.0
+244 error command "/usr/local/opt/nvm/v0.10.33/bin/node" "/usr/local/opt/nvm/v0.10.33/bin/npm" "install"
+245 error cwd /Users/kofi/thePoints/node-cached
+246 error node -v v0.10.33
+247 error npm -v 1.4.28
+248 error code ETARGET
+249 verbose exit [ 1, true ]
