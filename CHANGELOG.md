@@ -1,3 +1,7 @@
+v3.0.1
+------
+* exchange cs (for csr) and lodash (for underscore) - @Kofia5 #8
+
 v3.0.0
 ------
 Upgrading to this version changes the key hashing.
