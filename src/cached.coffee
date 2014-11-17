@@ -39,7 +39,7 @@ catch
 
 Cache = require './cache'
 
-{extend} = require 'underscore'
+{extend} = require 'lodash'
 
 namedCaches = {}
 

@@ -1,28 +1,21 @@
-
-SRC = $(shell find src -name "*.coffee" -type f | sort)
-LIB = $(SRC:src/%.coffee=lib/%.js)
-
-COFFEE=node_modules/.bin/coffee --js
-MOCHA=node_modules/.bin/mocha --recursive --compilers coffee:coffee-script-redux/register -u tdd --timeout 6000
+COFFEE=node_modules/.bin/coffee
+MOCHA=node_modules/.bin/mocha
 
 all: clean setup test check-checkout-clean
 
-build: $(LIB)
+build:
+	$(COFFEE) -cbo lib src
 	@./node_modules/.bin/npub prep lib
 
 prepublish:
 	./node_modules/.bin/npub prep
-
-lib/%.js: src/%.coffee
-	dirname "$@" | xargs mkdir -p
-	$(COFFEE) <"$<" >"$@"
 
 clean:
 	rm -rf lib
 	rm -rf node_modules
 
 test: build
-	$(MOCHA) -R spec test/*.coffee
+	$(MOCHA)
 
 release: all
 	git push --tags origin HEAD:master
