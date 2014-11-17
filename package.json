@@ -23,6 +23,7 @@
     "registry": "https://registry.npmjs.org",
     "license": {
       "exclude": [
+        "lib",
         "test"
       ]
     }
@@ -35,7 +36,7 @@
   "devDependencies": {
     "bondjs": "~1.0.0",
     "coffee-script": "~1.8.0",
-    "expect.js": "0.2.0",
+    "expect.js": "~0.2.0",
     "mocha": "~2.0.1",
     "npub": "0.0.5"
   }
