@@ -3,7 +3,7 @@ expect = require 'expect.js'
 bond = require 'bondjs'
 
 Q = require 'q'
-{defaults} = require 'underscore'
+{defaults} = require 'lodash'
 Cache = require '../lib/cache'
 cached = require '../lib/cached'
 
