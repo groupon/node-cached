@@ -9,7 +9,10 @@
     "cache"
   ],
   "scripts": {
-    "test": "make test"
+    "prepublish": "rm -rf lib && make build",
+    "pretest": "make build",
+    "test": "mocha",
+    "posttest": "npub verify"
   },
   "repository": {
     "type": "git",
@@ -38,6 +41,6 @@
     "coffee-script": "~1.8.0",
     "expect.js": "~0.2.0",
     "mocha": "~2.0.1",
-    "npub": "0.0.5"
+    "npub": "~0.5.1"
   }
 }
