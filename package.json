@@ -9,7 +9,8 @@
     "cache"
   ],
   "scripts": {
-    "pretest": "rm -rf lib && make build",
+    "prepublish": "rm -rf lib && make build",
+    "pretest": "make build",
     "test": "mocha",
     "posttest": "npub verify"
   },
