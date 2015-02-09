@@ -29,19 +29,13 @@ LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
 NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ###
-
-try
-  # This makes sure we don't spam the CPU if we have our own Q
-  Q = require '../node_modules/q'
-  Q.stopUnhandledRejectionTracking()
-catch
-  Q = require 'q'
+'use strict'
+Promise = require 'bluebird'
+{extend} = require 'lodash'
 
 Cache = require './cache'
 
-{extend} = require 'lodash'
-
-namedCaches = {}
+namedCaches = Object.create null
 
 cached = (name="default", options={}) ->
   options = extend { name }, options
@@ -51,7 +45,7 @@ cached.createCache = (options={}) ->
   new Cache(options)
 
 cached.dropNamedCaches = () ->
-  namedCaches = {}
+  namedCaches = Object.create null
   return cached
 
 cached.dropNamedCache = (name) ->
@@ -64,7 +58,6 @@ cached.knownCaches = ->
 cached.deferred = (fn) ->
   # a simple function that returns a promise of the execution of a
   # given nodejs callback-style function `fn`
-  ->
-    Q.nfcall fn
+  Promise.promisify fn
 
 module.exports = cached

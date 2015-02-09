@@ -29,14 +29,16 @@ LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
 NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ###
+'use strict'
+Promise = require 'bluebird'
 
 class NoopBackend
   description = "Simple backend doing nothing"
 
   constructor: -> @type = 'noop'
 
-  get: (key, callback) -> callback(null, null)
-  set: (key, value, options, callback) -> callback(null, value)
-  unset: (key, callback) -> callback(null)
+  get: (key) -> Promise.resolve(null)
+  set: (key, value) -> Promise.resolve(value)
+  unset: (key) -> Promise.resolve()
 
 module.exports = NoopBackend

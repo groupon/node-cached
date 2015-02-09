@@ -29,8 +29,9 @@ LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
 NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ###
-
+'use strict'
 Memcached = require 'memcached'
+{promisify} = require 'bluebird'
 
 class MemcachedBackend
   description = "Uses anything supporting the memcache protocol"
@@ -44,19 +45,20 @@ class MemcachedBackend
       hosts = options.hosts ? '127.0.0.1:11211'
       @client = new Memcached hosts, options
 
-  get: (key, callback) ->
-    @client.get key, (err, answer) ->
-      answer = null if answer == false
-      if err? then callback(err) else callback(null, answer)
+    @_clientGet = promisify @client.get, @client
+    @_clientSet = promisify @client.set, @client
+    @_clientDel = promisify @client.del, @client
 
-  set: (key, value, options, callback) ->
-    @client.set key, value, options.expire, (err, ok) ->
-      if err? then callback(err) else callback(null, value)
+  get: (key) ->
+    @_clientGet(key).then (answer) ->
+      if answer == false then null
+      else answer
 
-  unset: (key, callback) ->
-    delete @cache[key]
-    callback(null) if callback?
-    null
+  set: (key, value, options) ->
+    @_clientSet(key, value, options.expire).then -> value
+
+  unset: (key) ->
+    @_clientDel(key).then -> undefined
 
   end: ->
     @client.end()

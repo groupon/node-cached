@@ -1,89 +1,93 @@
+'use strict'
+assert = require 'assertive'
 
-expect = require 'expect.js'
-bond = require 'bondjs'
-
-Q = require 'q'
+Promise = require 'bluebird'
 {defaults} = require 'lodash'
 Cache = require '../lib/cache'
 cached = require '../lib/cached'
 
-cache = null
 values =
   key1: 'Value 1'
   key2: 'Value 2'
   key3: 'Value 3'
 
 backendOptions =
-  hosts: if process.env.MEMCACHED__HOST then "#{process.env.MEMCACHED__HOST}:11211" else '127.0.0.1:11211'
+  hosts:
+    if process.env.MEMCACHED__HOST
+      "#{process.env.MEMCACHED__HOST}:11211"
+    else
+      '127.0.0.1:11211'
 
-wait = (ms) ->
-  deferred = Q.defer()
-  setTimeout deferred.resolve, ms
-  deferred.promise
+waterfall = (fns) ->
+  next = (prev, fn) -> prev.then fn
+  fns.reduce next, Promise.resolve()
 
 describe 'Cache', ->
   it 'always has a backend', ->
     cache = new Cache {}
-    expect(cache.backend).not.to.be undefined
+    assert.notEqual undefined, cache.backend
 
   it 'has a "noop" backend by default', ->
     cache = new Cache {}
-    expect(cache.backend.type).to.equal 'noop'
+    assert.equal 'noop', cache.backend.type
 
   describe 'Cache#set', ->
     beforeEach ->
-      cache = new Cache backend: 'memory'
+      @cache = new Cache backend: 'memory'
 
     it 'supports callback style', (done) ->
-      cache.set 'key1', values.key1, done
+      @cache.set 'key1', values.key1, done
 
     it 'supports promise style', (done) ->
-      cache.set('key2', values.key2, { expire: 1 }).nodeify done
+      @cache.set('key2', values.key2, { expire: 1 }).nodeify done
 
   [ 'memory', 'memcached' ].map (backendType) ->
     describe "with backend \"#{backendType}\"", ->
-
-      beforeEach ->
-        cache = new Cache backend: defaults({ type: backendType }, backendOptions), name: 'awesome-name', debug: true
-      afterEach ->
-        cache.end()
+      before ->
+        @cache = new Cache backend: defaults({ type: backendType }, backendOptions), name: 'awesome-name', debug: true
+      after ->
+        @cache.end()
 
       describe 'Cache#get', ->
-        it 'gets a previously set key', (done) ->
-          [
-            ->
-              cache.set 'key1', values.key1
-            -> cache.get 'key1'
+        it 'gets a previously set key', ->
+          waterfall [
+            =>
+              @cache.set 'key1', values.key1
+            =>
+              @cache.get 'key1'
             (val) ->
-              expect(val).to.be values.key1
-          ].reduce(Q.when, Q()).nodeify done
+              assert.equal values.key1, val
+          ]
 
-        it 'is aware of expires', (done) ->
-          [
-            -> Q.all [
-              cache.set 'key1', values.key1, expire: 1
-              cache.set 'key2', values.key2, expire: 0
-              cache.set 'key3', values.key3, expire: 4
+        it 'is aware of expires', ->
+          stored = Promise.all [
+            @cache.set 'key1', values.key1, expire: 1
+            @cache.set 'key2', values.key2, expire: 0
+            @cache.set 'key3', values.key3, expire: 4
+          ]
+
+          retrieve = stored.delay(2000).then =>
+            Promise.all [
+              @cache.get 'key1'
+              @cache.get 'key2'
+              @cache.get 'key3'
             ]
-            -> wait 2000
-            -> Q.all [
-              cache.get 'key1'
-              cache.get 'key2'
-              cache.get 'key3'
-            ]
-            ([ val1, val2, val3 ]) ->
-              expect(val1).to.be null # less than 2 seconds lifetime
-              expect(val2).to.equal values.key2 # eternal lifetime
-              expect(val3).to.equal values.key3 # more than 2 seconds lifetime
-          ].reduce(Q.when, Q()).nodeify done
+
+          retrieve.spread (val1, val2, val3) ->
+            # less than 2 seconds lifetime
+            assert.equal null, val1
+            # eternal lifetime
+            assert.equal values.key2, val2
+            # more than 2 seconds lifetime
+            assert.equal values.key3, val3
 
       describe 'Cache#getOrElse', ->
-        it 'replaces values lazily', (done) ->
+        it 'replaces values lazily', ->
           generatorCalled = 0
           # generate a value in a certain time
           valueGenerator = (v, ms) -> ->
             ++generatorCalled
-            Q.delay(ms).then -> v
+            Promise.resolve(v).delay(ms)
 
           originalValue = values.key1
           generatedValue = 'G1'
@@ -107,60 +111,84 @@ describe 'Cache', ->
           #   - return immediately with the stale value
           # * After generating the value is done we call #getOrElse a 3rd time. We should
           #   be getting the generated value and not be starting another generator
-          [
-            -> cache.set 'key1', originalValue, freshFor: 1
-            -> wait 1200
-            -> cache.get('key1')
-            (v) -> expect(v).to.be originalValue
+          waterfall [
+            =>
+              @cache.set 'key1', originalValue, freshFor: 1
+            ->
+              Promise.delay 1200
+            =>
+              @cache.get('key1')
+            (v) ->
+              assert.equal originalValue, v
 
-            -> cache.getOrElse 'key1', valueGenerator(generatedValue, 100), freshFor: 5
+            =>
+              @cache.getOrElse 'key1', valueGenerator(generatedValue, 100), freshFor: 5
             (v) ->
-              expect(v).to.be originalValue
-            -> wait 50 # while generating
-            -> cache.getOrElse 'key1', valueGenerator('G2', 5000), freshFor: 5
+              assert.equal originalValue, v
+            ->
+              Promise.delay 50 # while generating
+            =>
+              @cache.getOrElse 'key1', valueGenerator('G2', 5000), freshFor: 5
             (v) ->
-              expect(v).to.be originalValue
-            -> wait 100
-            -> cache.getOrElse 'key1', valueGenerator('G3', 5000), freshFor: 5
+              assert.equal originalValue, v
+            ->
+              Promise.delay 100
+            =>
+              @cache.getOrElse 'key1', valueGenerator('G3', 5000), freshFor: 5
             (v) ->
-              expect(v).to.be generatedValue
-              expect(generatorCalled).to.be 1
-          ].reduce(Q.when, Q()).nodeify done
+              assert.equal generatedValue, v
+              assert.equal 1, generatorCalled
+          ]
 
         it 'throws errors', (done) ->
           errorGenerator = cached.deferred (cb) ->
             cb new Error 'Big Error'
 
           theCallback = (err, data) ->
-            expect(err)
-            expect(err.message).to.be 'Big Error'
-            expect(data).to.be undefined
+            assert.equal 'Big Error', err?.message
+            assert.equal undefined, data
             done()
 
-          cache.getOrElse 'bad_keys', errorGenerator, freshFor: 1, theCallback
+          @cache.getOrElse 'bad_keys', errorGenerator, freshFor: 1, theCallback
 
-        it 'handles thrown get errors by falling back on the value refresher', (done) ->
-          valueGenerator = cached.deferred (cb) ->
-            cb null, 'fresh cats'
+        describe 'backed.get failing', ->
+          before ->
+            @failCache = new Cache {
+              backend: @cache.backend
+              name: 'awesome-name'
+              debug: true
+            }
+            @failCache.getWrapped = ->
+              Promise.reject new Error('backend get troubles')
 
-          theCallback = (err, data) ->
-            expect(err).to.be null
-            expect(data).to.be 'fresh cats'
-            done()
+          it 'falls back on the value refresher', (done) ->
+            valueGenerator = cached.deferred (cb) ->
+              cb null, 'fresh cats'
 
-          bond(cache, 'getWrapped').return Q.reject new Error('backend get troubles')
+            theCallback = (err, data) ->
+              assert.equal null, err
+              assert.equal 'fresh cats', data
+              done()
 
-          cache.getOrElse 'bad_get', valueGenerator, freshFor: 5, theCallback
+            @failCache.getOrElse 'bad_get', valueGenerator, freshFor: 5, theCallback
 
-        it 'handles thrown set errors by falling back on the generated value', (done) ->
-          valueGenerator = cached.deferred (cb) ->
-            cb null, 'generated bunnies'
+        describe 'backend.set failing', ->
+          before ->
+            @failCache = new Cache {
+              backend: @cache.backend
+              name: 'awesome-name'
+              debug: true
+            }
+            @failCache.set = ->
+              Promise.reject new Error('backend set troubles')
 
-          theCallback = (err, data) ->
-            expect(err).to.be null
-            expect(data).to.be 'generated bunnies'
-            done()
+          it 'falls back on the generated value', (done) ->
+            valueGenerator = cached.deferred (cb) ->
+              cb null, 'generated bunnies'
 
-          bond(cache, 'set').return Q.reject new Error('backend set troubles')
+            theCallback = (err, data) ->
+              assert.equal null, err
+              assert.equal 'generated bunnies', data
+              done()
 
-          cache.getOrElse 'bad_set', valueGenerator, freshFor: 5, theCallback
+            @failCache.getOrElse 'bad_set', valueGenerator, freshFor: 5, theCallback
