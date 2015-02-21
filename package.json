@@ -9,7 +9,12 @@
     "cache"
   ],
   "scripts": {
-    "test": "make test"
+    "build": "coffee -cbo lib src",
+    "watch": "coffee -wcbo lib src",
+    "prepublish": "rm -rf lib && npm run build",
+    "pretest": "npm run build",
+    "test": "mocha",
+    "posttest": "npub verify"
   },
   "repository": {
     "type": "git",
@@ -29,15 +34,14 @@
     }
   },
   "dependencies": {
-    "lodash": "~2.4.1",
-    "memcached": "~2.0.0",
-    "q": "~0.9.7"
+    "bluebird": "^2.9.7",
+    "lodash": "^3.1.0",
+    "memcached": "^2.1.0"
   },
   "devDependencies": {
-    "bondjs": "~1.0.0",
-    "coffee-script": "~1.8.0",
-    "expect.js": "~0.2.0",
-    "mocha": "~2.0.1",
-    "npub": "0.0.5"
+    "assertive": "^1.4.1",
+    "coffee-script": "^1.9.0",
+    "mocha": "^2.0.1",
+    "npub": "~0.5.1"
   }
 }

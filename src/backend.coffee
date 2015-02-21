@@ -29,13 +29,12 @@ LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
 NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ###
+'use strict'
+typeMap = Object.create null
 
-backend = module.exports = {}
-typeMap = {}
+exports.addType = (type, klass) -> typeMap[type] = klass
 
-backend.addType = (type, klass) -> typeMap[type] = klass
-
-backend.create = (options) ->
+exports.create = (options) ->
   options ?= {}
 
   # make the whole thing idempotent
@@ -47,6 +46,6 @@ backend.create = (options) ->
   throw new Error("#{type} is not a supported cache backend type") unless klass?
   new klass(options)
 
-backend.addType 'noop', require("./backends/noop")
-backend.addType 'memory', require("./backends/memory")
-backend.addType 'memcached', require("./backends/memcached")
+exports.addType 'noop', require("./backends/noop")
+exports.addType 'memory', require("./backends/memory")
+exports.addType 'memcached', require("./backends/memcached")

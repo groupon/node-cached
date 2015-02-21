@@ -29,16 +29,17 @@ LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
 NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ###
-
+'use strict'
 {extend} = require 'lodash'
-Q = require 'q'
+Promise = require 'bluebird'
+
 Backend = require './backend'
 
 toPromise = (val) ->
   # If val is a function, evaluate it first, convert into promise afterwards
   if 'function' is typeof val
-    Q val()
-  else Q val
+    Promise.resolve val()
+  else Promise.resolve val
 
 expiresAt = (seconds) ->
   if seconds is 0 then 0
@@ -95,16 +96,15 @@ class Cache
 
     key = @applyPrefix key
 
-    backend = @backend
     opts = @prepareOptions opts
 
-    toPromise(val).then( (resolvedValue) ->
-      wrappedValue =
-        b: expiresAt(opts.freshFor)
-        d: resolvedValue
-
-      Q.npost backend, 'set', [ key, wrappedValue, opts ]
-    ).nodeify cb
+    toPromise(val)
+      .then (resolvedValue) =>
+        @backend.set key, {
+          b: expiresAt(opts.freshFor)
+          d: resolvedValue
+        }, opts
+     .nodeify cb
 
   # Every value we cache is wrapped to enable graceful expire:
   # {
@@ -114,15 +114,15 @@ class Cache
   # This allows us to have stale values stored in the cache and fetch a
   # replacement in the background.
   getWrapped: (key) ->
-    Q.npost(@backend, 'get', [ key ])
+    @backend.get key
 
   get: (rawKey, cb) ->
     key = @applyPrefix rawKey
-    @getWrapped(key).then(
-      (wrappedValue) ->
+    @getWrapped(key)
+      .then (wrappedValue) ->
         # blindly return the wrapped value, ignoring freshness
         wrappedValue?.d ? null
-    ).nodeify cb
+      .nodeify cb
 
   # Get from a cache or generate if not present or stale.
   # A value is stale when it was generated more than `freshFor` seconds ago

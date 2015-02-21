@@ -29,18 +29,21 @@ LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
 NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ###
+'use strict'
+Promise = require 'bluebird'
 
 class MemoryBackend
   description = "Stores everything just in memory"
 
-  constructor: -> @cache = {}; @type = 'memory'
+  constructor: ->
+    @cache = Object.create null
+    @type = 'memory'
 
-  get: (key, callback) ->
+  get: (key) ->
     if @isExpired(@cache[key]?.e)
       delete @cache[key] # make sure it does not exist
 
-    callback(null, @cache[key]?.d ? null) if callback?
-    null
+    Promise.resolve(@cache[key]?.d ? null)
 
   expiresAt: (seconds) ->
     if seconds is 0 then 0
@@ -52,17 +55,15 @@ class MemoryBackend
     # "now is greater than expires"
     return (new Date()).getTime() > (new Date(expires)).getTime()
 
-  set: (key, value, options, callback) ->
+  set: (key, value, options) ->
     @cache[key] =
       d: value
       e: @expiresAt(options.expire)
 
-    callback(null, value) if callback?
-    null
+    Promise.resolve value
 
-  unset: (key, callback) ->
+  unset: (key) ->
     delete @cache[key]
-    callback(null) if callback?
-    null
+    Promise.resolve()
 
 module.exports = MemoryBackend

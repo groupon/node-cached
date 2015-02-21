@@ -1,5 +1,5 @@
-
-expect = require 'expect.js'
+'use strict'
+assert = require 'assertive'
 
 cached = require '..'
 
@@ -8,18 +8,20 @@ describe 'cached', ->
     cached.dropNamedCaches()
 
   it 'is a function', ->
-    expect(typeof cached).to.be 'function'
+    assert.hasType Function, cached
 
   it 'can create different named caches', ->
-    expect(cached('foo')).not.to.be(cached('bar'))
-    expect(cached('foo')).not.to.be(cached())
-    expect(cached.knownCaches()).to.eql [ 'foo', 'bar', 'default' ]
+    assert.notEqual cached('bar'), cached('foo')
+    assert.notEqual cached(), cached('foo')
+    assert.deepEqual [
+      'bar', 'foo', 'default'
+    ], cached.knownCaches()
 
   it 'the default cache is named "default"', ->
-    expect(cached()).to.be(cached('default'))
+    assert.equal cached('default'), cached()
 
   it 'returns the same named cache for subsequent calls', ->
-    expect(cached('foo')).to.be(cached('foo'))
+    assert.equal cached('foo'), cached('foo')
 
   it 'knows no caches', ->
-    expect(cached.knownCaches()).to.eql []
+    assert.deepEqual [], cached.knownCaches()
