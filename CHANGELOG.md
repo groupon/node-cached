@@ -1,3 +1,8 @@
+4.0.0
+-----
+* Recompiled using cs 1.9.1 - @jkrems #11
+* Bringing this package into the future, io.js support - @jkrems #10
+
 v3.0.1
 ------
 * exchange cs (for csr) and lodash (for underscore) - @Kofia5 #8
