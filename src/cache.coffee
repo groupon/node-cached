@@ -71,7 +71,10 @@ class Cache
     @setDefaults defaults
     @setBackend backend
 
-  applyPrefix: (key) -> "#{@prefix}#{key}"
+  applyPrefix: (key) ->
+    [ @prefix, key ].join ''
+    # don't refactor the above line to a concatenation
+    # see https://github.com/3rd-Eden/node-memcached/pull/205 for details
 
   setDefaults: (defaults) ->
     @defaults = @prepareOptions defaults
