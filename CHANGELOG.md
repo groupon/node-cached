@@ -1,3 +1,7 @@
+4.0.1
+-----
+* Fixing memcached.set slowness - @chkhoo #15
+
 4.0.0
 -----
 * Recompiled using cs 1.9.1 - @jkrems #11
