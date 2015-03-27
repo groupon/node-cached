@@ -136,32 +136,46 @@ class Cache
     {cb,opts} = optionalOpts(opts, cb)
     opts = @prepareOptions opts
 
-    refreshValue = =>
-      generatedValue = toPromise(val)
+    resetStaleOrPending = (passThroughData) =>
+      delete @staleOrPending[key]
+      passThroughData
 
+    writeValue = (generatedValue) =>
       @set(rawKey, generatedValue, opts).then(
-        (rawValue) =>
-          delete @staleOrPending[key]
-          rawValue?.d ? null
-
-        (err) =>
+        (rawValue) -> rawValue?.d ? null
+        ->
           # return generated value instead of error
           # tracking backend errors should be done with wrapping your backend clients
-          delete @staleOrPending[key]
           generatedValue ? null
       )
+
+    refreshValue = ->
+      refreshed = toPromise(val)
+        .then writeValue
+        .then resetStaleOrPending, (err) ->
+          resetStaleOrPending() # always reset
+          if refreshed.wasEverReturned
+            Promise.reject err
+          else
+            null # just ignore
 
     verifyFreshness = (wrappedValue) =>
       # best before is expired, we have to reload
       hit = wrappedValue?
       expired = isExpired wrappedValue?.b
       loadingNewValue = @staleOrPending[key]?
+      dataFromCache = wrappedValue?.d
 
       if (!hit or expired) && !loadingNewValue
         @staleOrPending[key] = refreshValue()
+        loadingNewValue = true
 
       # Return the value even if it's stale, we want the result ASAP
-      wrappedValue?.d ? @staleOrPending[key]
+      if !dataFromCache? && loadingNewValue
+        @staleOrPending[key].wasEverReturned = true
+        @staleOrPending[key]
+      else
+        dataFromCache
 
     handleError = (error) ->
       # we should let the refreshValue method work if getWrapped has problems

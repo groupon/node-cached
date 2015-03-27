@@ -22,6 +22,20 @@ waterfall = (fns) ->
   next = (prev, fn) -> prev.then fn
   fns.reduce next, Promise.resolve()
 
+unexpected = (value) ->
+  console.error value
+  throw new Error 'Unexpected value'
+
+unhandledRejections = []
+Promise.onPossiblyUnhandledRejection (err) ->
+  console.error 'Possibly unhandled rejection:', err.stack
+  unhandledRejections.push err
+
+after 'Check for unhandled rejections', ->
+  if unhandledRejections.length
+    console.error 'Found %d unhandled rejections', unhandledRejections.length
+    throw unhandledRejections[0]
+
 describe 'Cache', ->
   it 'always has a backend', ->
     cache = new Cache {}
@@ -150,6 +164,26 @@ describe 'Cache', ->
             done()
 
           @cache.getOrElse 'bad_keys', errorGenerator, freshFor: 1, theCallback
+
+        describe 'refresh of expired value failing', ->
+          before 'set value that is stale after a second', ->
+            @cache.set 'key1', values.key1, freshFor: 1, expire: 3
+
+          before 'wait >1 seconds', (done) -> setTimeout(done, 1100)
+
+          it 'returns the original value if generating a new value fails', ->
+            generator = -> Promise.reject new Error 'Oops'
+            @cache.getOrElse 'key1', generator
+              .then assert.equal.bind(null, values.key1)
+
+          describe 'after two more second', ->
+            before 'wait >2 seconds', (done) -> setTimeout(done, 2100)
+
+            it 'fails to return a value if generating fails again', ->
+              generator = -> Promise.reject new Error 'Oops'
+              @cache.getOrElse 'key1', generator
+                .then unexpected, (err) ->
+                  assert.equal 'Oops', err.message
 
         describe 'backed.get failing', ->
           before ->
