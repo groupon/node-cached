@@ -1,3 +1,8 @@
+4.0.2
+-----
+* Fix unhandled rejections w/ lazy fetching - @jkrems
+  https://github.com/groupon/node-cached/pull/16
+
 4.0.1
 -----
 * Fixing memcached.set slowness - @chkhoo #15
