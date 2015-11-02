@@ -46,9 +46,9 @@ class MemcachedBackend
       hosts = options.hosts ? '127.0.0.1:11211'
       @client = new Memcached hosts, options
 
-    @_clientGet = promisify @client.get, @client
-    @_clientSet = promisify @client.set, @client
-    @_clientDel = promisify @client.del, @client
+    @_clientGet = promisify @client.get, context: @client
+    @_clientSet = promisify @client.set, context: @client
+    @_clientDel = promisify @client.del, context: @client
 
   get: (key) ->
     @_clientGet(key).then (answer) ->

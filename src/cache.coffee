@@ -108,7 +108,7 @@ class Cache
           b: expiresAt(opts.freshFor)
           d: resolvedValue
         }, opts
-     .nodeify cb
+      .nodeify cb
 
   # Every value we cache is wrapped to enable graceful expire:
   # {
@@ -141,13 +141,12 @@ class Cache
       passThroughData
 
     writeValue = (generatedValue) =>
-      @set(rawKey, generatedValue, opts).then(
-        (rawValue) -> rawValue?.d ? null
-        ->
+      @set(rawKey, generatedValue, opts)
+        .then (rawValue) -> rawValue?.d ? null
+        .catch ->
           # return generated value instead of error
           # tracking backend errors should be done with wrapping your backend clients
           generatedValue ? null
-      )
 
     refreshValue = ->
       refreshed = toPromise(val)
