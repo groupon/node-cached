@@ -10,7 +10,7 @@
   ],
   "scripts": {
     "build": "coffee -cbo lib src",
-    "watch": "coffee -wcbo lib src",
+    "watch": "coffee -wcbo lib src & nodemon -w src -w test -e coffee,js,json -x mocha",
     "prepublish": "rm -rf lib && npm run build",
     "pretest": "npm run build",
     "test": "mocha",
@@ -34,7 +34,7 @@
     }
   },
   "dependencies": {
-    "bluebird": "^2.9.7",
+    "bluebird": "^3.0.5",
     "lodash": "^3.1.0",
     "memcached": "^2.1.0"
   },
@@ -42,6 +42,7 @@
     "assertive": "^1.4.1",
     "coffee-script": "^1.9.0",
     "mocha": "^2.0.1",
+    "nodemon": "^1.8.0",
     "npub": "~0.5.1"
   }
 }
