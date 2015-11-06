@@ -10,7 +10,7 @@
   ],
   "scripts": {
     "watch": "mocha --watch",
-    "pretest": "eslint lib || true",
+    "pretest": "eslint lib",
     "test": "mocha",
     "posttest": "npub verify"
   },
