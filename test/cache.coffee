@@ -159,8 +159,8 @@ describe 'Cache', ->
             cb new Error 'Big Error'
 
           theCallback = (err, data) ->
-            assert.equal 'Big Error', err?.message
             assert.equal undefined, data
+            assert.equal 'Big Error', err?.message
             done()
 
           @cache.getOrElse 'bad_keys', errorGenerator, freshFor: 1, theCallback

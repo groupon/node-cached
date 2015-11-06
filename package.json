@@ -9,13 +9,14 @@
     "cache"
   ],
   "scripts": {
-    "build": "coffee -cbo lib src",
-    "watch": "coffee -wcbo lib src & nodemon -w src -w test -e coffee,js,json -x mocha",
-    "prepublish": "rm -rf lib && npm run build",
-    "pretest": "npm run build",
+    "watch": "mocha --watch",
+    "pretest": "eslint lib || true",
     "test": "mocha",
     "posttest": "npub verify"
   },
+  "files": [
+    "lib"
+  ],
   "repository": {
     "type": "git",
     "url": "git://github.com/groupon/node-cached.git"
@@ -28,7 +29,6 @@
     "registry": "https://registry.npmjs.org",
     "license": {
       "exclude": [
-        "lib",
         "test"
       ]
     }
@@ -39,10 +39,11 @@
     "memcached": "^2.1.0"
   },
   "devDependencies": {
-    "assertive": "^1.4.1",
+    "assertive": "^2.0.0",
     "coffee-script": "^1.9.0",
+    "eslint": "~1.8.0",
+    "eslint-config-airbnb": "~0.1.0",
     "mocha": "^2.0.1",
-    "nodemon": "^1.8.0",
-    "npub": "~0.5.1"
+    "npub": "^2.0.0"
   }
 }
