@@ -10,7 +10,7 @@
   ],
   "scripts": {
     "watch": "mocha --watch",
-    "pretest": "eslint lib",
+    "pretest": "eslint lib test",
     "test": "mocha",
     "posttest": "npub verify"
   },
@@ -40,8 +40,10 @@
   },
   "devDependencies": {
     "assertive": "^2.0.0",
+    "babel-core": "^5.8.33",
+    "babel-eslint": "^4.1.4",
     "coffee-script": "^1.9.0",
-    "eslint": "~1.8.0",
+    "eslint": "^1.8.0",
     "eslint-config-airbnb": "~0.1.0",
     "mocha": "^2.0.1",
     "npub": "^2.0.0"
