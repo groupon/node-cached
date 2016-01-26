@@ -14,7 +14,7 @@ describe('cached', () => {
   it('can create different named caches', () => {
     assert.notEqual(cached('bar'), cached('foo'));
     assert.notEqual(cached(), cached('foo'));
-    assert.deepEqual([ 'bar', 'foo', 'default' ], cached.knownCaches());
+    assert.deepEqual(['bar', 'foo', 'default'], cached.knownCaches());
   });
 
   it('the default cache is named "default"', () =>

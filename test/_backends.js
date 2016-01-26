@@ -1,4 +1,4 @@
-import {defaults} from 'lodash';
+import { defaults } from 'lodash';
 
 import Cache from '../lib/cache';
 
@@ -7,7 +7,7 @@ const backendOptions = {
 };
 
 export default function withBackends(createTestCases) {
-  [ 'memory', 'memcached' ].forEach(backendType => {
+  ['memory', 'memcached'].forEach(backendType => {
     describe(`with backend "${backendType}"`, () => {
       const cache = new Cache({
         backend: defaults({ type: backendType }, backendOptions),

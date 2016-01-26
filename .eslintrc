@@ -1,9 +1,3 @@
 {
-  "extends": "airbnb/legacy",
-  "rules": {
-    "id-length": 0,
-    "vars-on-top": 0,
-    "strict": [2, "global"],
-    "no-param-reassign": 0
-  }
+  "extends": "groupon/legacy"
 }
