@@ -1,3 +1,9 @@
+### 4.1.1
+
+* Switch to nlm - **[@jkrems](https://github.com/jkrems)** [#21](https://github.com/groupon/node-cached/pull/21)
+  - [`bdac8c6`](https://github.com/groupon/node-cached/commit/bdac8c6f1f68e6296abf513c941736c88771149a) **chore:** Switch to nlm
+
+
 4.0.2
 -----
 * Fix unhandled rejections w/ lazy fetching - @jkrems
