@@ -4,33 +4,24 @@
   "description": "Simple access to a cache",
   "license": "BSD-3-Clause",
   "main": "lib/cached.js",
-  "keywords": [
-    "memcached",
-    "stampede",
-    "cache"
-  ],
-  "scripts": {
-    "watch": "mocha --watch",
-    "pretest": "eslint lib test",
-    "test": "mocha",
-    "posttest": "npub verify"
-  },
-  "files": [
-    "lib"
-  ],
+  "homepage": "https://github.com/groupon/node-cached",
   "repository": {
     "type": "git",
-    "url": "git://github.com/groupon/node-cached.git"
+    "url": "git+ssh://git@github.com/groupon/node-cached"
   },
-  "author": {
-    "name": "Jan Krems",
-    "email": "jan.krems@groupon.com>"
+  "bugs": {
+    "url": "https://github.com/groupon/node-cached/issues"
   },
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org",
+  "scripts": {
+    "pretest": "eslint lib test",
+    "test": "mocha",
+    "posttest": "nlm verify",
+    "watch": "mocha --watch"
+  },
+  "nlm": {
     "license": {
-      "exclude": [
-        "test"
+      "files": [
+        "lib"
       ]
     }
   },
@@ -42,10 +33,24 @@
   "devDependencies": {
     "assertive": "^2.0.0",
     "babel-core": "^5.8.33",
-    "babel-eslint": "^4.1.4",
-    "eslint": "^1.8.0",
-    "eslint-config-airbnb": "~0.1.0",
-    "mocha": "^2.0.1",
-    "npub": "^2.0.0"
+    "eslint": "^1.0.0",
+    "eslint-config-groupon": "^2.0.0",
+    "mocha": "^2.0.0",
+    "nlm": "^2.0.0"
+  },
+  "author": {
+    "name": "Groupon",
+    "email": "opensource@groupon.com"
+  },
+  "keywords": [
+    "memcached",
+    "stampede",
+    "cache"
+  ],
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
   }
 }

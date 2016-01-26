@@ -1,9 +1,9 @@
 {
-  "extends": "airbnb/base",
+  "extends": "groupon/base",
   "env": {
     "mocha": true
   },
   "rules": {
-    "id-length": 0
+    "func-names": 0
   }
 }
