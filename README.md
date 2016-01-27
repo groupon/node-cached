@@ -138,6 +138,11 @@ The two important ones are `freshFor` and `expire`:
 
 * `expire` is the time in seconds after which a value should be deleted from the cache (or whatever expiring natively means for the backend). Usually you'd want this to be `0` (never expire).
 * `freshFor` is the time in seconds after which a value should be replaced. Replacing the value is done in the background and while the new value is generated (e.g. data is fetched from some service) the stale value is returned. Think of `freshFor` as a smarter `expire`.
+* `timeout` is the maximum time in milliseconds to wait for cache operations to complete.
+  Configuring a timeout ensures that all `get` and `set` operations fail fast.
+  Otherwise there will be situations where one of the cache hosts goes down and reads hang for minutes while the memcached client retries to establish a connection.
+  It's **highly** recommended to set a timeout.
+  If `timeout` is left `undefined`, no timeout will be set and the operations will only fail once the underlying client, e.g. [`memcached`](https://github.com/3rd-Eden/memcached), gave up.
 
 ### Cache.set(key, value, opts, cb) -> Promise[Value]
 
