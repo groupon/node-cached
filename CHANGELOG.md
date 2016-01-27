@@ -1,3 +1,9 @@
+### 4.2.0
+
+* True timeouts for cache calls - **[@jkrems](https://github.com/jkrems)** [#22](https://github.com/groupon/node-cached/pull/22)
+  - [`0d9e48f`](https://github.com/groupon/node-cached/commit/0d9e48fc07b82723a481499084a9bf14f3bc1b0d) **feat:** True timeouts for cache calls
+
+
 ### 4.1.1
 
 * Switch to nlm - **[@jkrems](https://github.com/jkrems)** [#21](https://github.com/groupon/node-cached/pull/21)
