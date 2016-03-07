@@ -1,3 +1,9 @@
+### 4.2.1
+
+* Apply latest nlm generator - **[@i-tier-bot](https://github.com/i-tier-bot)** [#24](https://github.com/groupon/node-cached/pull/24)
+  - [`ee2b354`](https://github.com/groupon/node-cached/commit/ee2b354f83c2ee0fa4cc865e49bb4c6c4434c001) **chore:** Apply latest nlm generator
+
+
 ### 4.2.0
 
 * True timeouts for cache calls - **[@jkrems](https://github.com/jkrems)** [#22](https://github.com/groupon/node-cached/pull/22)
