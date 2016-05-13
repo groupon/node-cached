@@ -123,8 +123,8 @@ cached('myStuff');
 
 Creates a new named cache or returns a previously initialized cache.
 
-* **name:** A meaningful name for what is in the cache, default: `"default"`. This will also be used as a key-prefix. If the name is `"cars"`, all keys will be prefixed with `"cars:"`
-* **options:**
+* **name:** (required) A meaningful name for what is in the cache. This will also be used as a key-prefix. If the name is `"cars"`, all keys will be prefixed with `"cars:"`
+* **options:** (optional)
   * **backend:** An object that has at least a `type` property. If no backend is configured, the cache will run in "noop"-mode, not caching anything. All other properties are forwarded to the backend, see [using different backends](#supported-backends) for which backend types exist and what options they support.
   * **defaults:** Defaults to apply for all cache operations. See `Cache.setDefaults`
 
