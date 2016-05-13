@@ -88,6 +88,35 @@ cached('myStuff', { backend: {
 }});
 ```
 
+### Memory
+
+Stores all the data in an in-memory object. 
+
+#### Example
+
+```js
+cached('myStuff', { backend: {
+  type: 'memory'
+}});
+```
+
+### Noop
+
+Doesn't store data at all. All `set` operations succeed and `get` operations behave as if the value were not found in the cache.
+
+#### Examples
+
+```js
+cached('myStuff', { backend: {
+  type: 'noop'
+}});
+```
+
+```js
+cached('myStuff');
+```
+
+
 ## API
 
 ### cached(name: string, options) -> Cache
