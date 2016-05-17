@@ -1,3 +1,10 @@
+### 4.2.2
+
+* Update documentation for `cached` and backends - **[@fdegiuli](https://github.com/fdegiuli)** [#27](https://github.com/groupon/node-cached/pull/27)
+  - [`b137f56`](https://github.com/groupon/node-cached/commit/b137f56b77f1278ca6ab3680b6a0d1187941f788) **docs:** Add memory, noop backends to docs
+  - [`e4bd666`](https://github.com/groupon/node-cached/commit/e4bd6667d8f9fa2f4017876badee9e28e9d0bd49) **docs:** Deprecate unnamed caches
+
+
 ### 4.2.1
 
 * Apply latest nlm generator - **[@i-tier-bot](https://github.com/i-tier-bot)** [#24](https://github.com/groupon/node-cached/pull/24)
