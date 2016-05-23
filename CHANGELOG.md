@@ -1,3 +1,10 @@
+### 4.2.3
+
+* docs: Update memory backend docs - **[@fdegiuli](https://github.com/fdegiuli)** [#29](https://github.com/groupon/node-cached/pull/29)
+  - [`3cebdb3`](https://github.com/groupon/node-cached/commit/3cebdb3cdb0dc997803d81d6c8c615e308261b0b) **docs:** Update memory backend docs
+  - [`dabce45`](https://github.com/groupon/node-cached/commit/dabce45603667e7112a87bf5592eaab73aac3b0e) **docs:** Fix formatting
+
+
 ### 4.2.2
 
 * Update documentation for `cached` and backends - **[@fdegiuli](https://github.com/fdegiuli)** [#27](https://github.com/groupon/node-cached/pull/27)
