@@ -91,7 +91,7 @@ cached('myStuff', { backend: {
 ### Memory
 
 Stores all the data in an in-memory object. 
-***Caveat:** `get()` will return a reference to the stored value. Mutating the returned value will affect the value in the cache.*
+*__Caveat:__ `get()` will return a reference to the stored value. Mutating the returned value will affect the value in the cache.*
 
 #### Example
 
