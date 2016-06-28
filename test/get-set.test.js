@@ -3,7 +3,7 @@ import Bluebird from 'bluebird';
 
 import withBackends from './_backends';
 
-describe('Cache::{get,set}', () => {
+describe('Cache::{get,set,unset}', () => {
   withBackends(cache => {
     it('get/set (callback style)', done => {
       cache.set('callback-key', 'callback-value', setError => {
@@ -24,6 +24,32 @@ describe('Cache::{get,set}', () => {
     it('get/set (promise style)', async () => {
       await cache.set('promise-key', 'promise-value', { expire: 1 });
       assert.equal('promise-value', await cache.get('promise-key'));
+    });
+
+
+    it('set/unset (callback style', done => {
+      cache.set('callback-key', 'callback-value', setError => {
+        if (setError) return done(setError);
+        cache.unset('callback-key', unsetError => {
+          if (unsetError) return done(unsetError);
+          cache.get('callback-key', (getError, value) => {
+            if (getError) return done(getError);
+            let assertError = null;
+            try {
+              assert.equal(null, value);
+            } catch (error) {
+              assertError = error;
+            }
+            done(assertError);
+          });
+        });
+      });
+    });
+
+    it('set/unset (promise style)', async () => {
+      await cache.set('promise-key', 'promise-value', { expire: 1 });
+      await cache.unset('promise-key');
+      assert.equal(null, await cache.get('promise-key'));
     });
 
     it('honors expires', async () => {
