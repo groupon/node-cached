@@ -202,3 +202,8 @@ When multiple `getOrElse` calls concurrently encounter the same stale value, it 
 This is done on a per-instance level, so if you create many cache instances reading and writing the same keys, you are asking for trouble.
 If you don't, the worst case is every process in your system fetching the value at once.
 Which should be a smaller number than the number of concurrent requests in most cases.
+
+### Cache.unset(key, cb) -> Promise
+
+Cache delete operation.
+`key` has to be a string.
