@@ -1,3 +1,9 @@
+### 4.3.0
+
+* feat: expose `cache.unset` - **[@fdegiuli](https://github.com/fdegiuli)** [#31](https://github.com/groupon/node-cached/pull/31)
+  - [`4e296af`](https://github.com/groupon/node-cached/commit/4e296afed9ce305ed27f94fb9d0e011a01d0bd87) **feat:** expose `cache.unset`
+
+
 ### 4.2.3
 
 * docs: Update memory backend docs - **[@fdegiuli](https://github.com/fdegiuli)** [#29](https://github.com/groupon/node-cached/pull/29)
