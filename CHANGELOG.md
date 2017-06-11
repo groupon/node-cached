@@ -1,3 +1,11 @@
+### 4.3.1
+
+* docs: Clarify that timeout applies to unset - **[@Zanadar](https://github.com/Zanadar)** [#36](https://github.com/groupon/node-cached/pull/36)
+  - [`89209ce`](https://github.com/groupon/node-cached/commit/89209cefca9ad39ea1b2a789dd49e23d65eee960) **docs:** Clarify that timeout applies to unset
+* docs: Fix typo in contributing.md - **[@Zanadar](https://github.com/Zanadar)** [#35](https://github.com/groupon/node-cached/pull/35)
+  - [`a3e5efa`](https://github.com/groupon/node-cached/commit/a3e5efaeec84e115de7fea035d5f69efc08cae3e) **docs:** fix typo in contributing.md
+
+
 ### 4.3.0
 
 * feat: expose `cache.unset` - **[@fdegiuli](https://github.com/fdegiuli)** [#31](https://github.com/groupon/node-cached/pull/31)
