@@ -26,7 +26,6 @@ describe('Cache::{get,set,unset}', () => {
       assert.equal('promise-value', await cache.get('promise-key'));
     });
 
-
     it('set/unset (callback style', done => {
       cache.set('callback-key', 'callback-value', setError => {
         if (setError) return done(setError);
@@ -67,8 +66,10 @@ describe('Cache::{get,set,unset}', () => {
 
       await Bluebird.delay(2000);
 
-      const [expired, eternal, hit] =
-        await Bluebird.map(['key', 'key2', 'key3'], key => cache.get(key));
+      const [expired, eternal, hit] = await Bluebird.map(
+        ['key', 'key2', 'key3'],
+        key => cache.get(key)
+      );
 
       assert.equal(null, expired);
       assert.equal(values.key2, eternal);

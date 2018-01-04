@@ -1,9 +1,12 @@
 {
-  "extends": "groupon/base",
   "env": {
     "mocha": true
   },
-  "rules": {
-    "func-names": 0
-  }
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "sourceType": "module",
+    "allowImportExportEverywhere": true,
+    "codeFrame": false
+  },
+  "root": true
 }

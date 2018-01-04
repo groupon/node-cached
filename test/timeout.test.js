@@ -19,7 +19,7 @@ describe('Cache timeouts', () => {
   });
 
   describe('with a timeout <150ms', () => {
-    before(() => cache.defaults.timeout = 50);
+    before(() => (cache.defaults.timeout = 50));
 
     it('get fails fast', async () => {
       const err = await Bluebird.race([
@@ -51,7 +51,7 @@ describe('Cache timeouts', () => {
   });
 
   describe('with a timeout >150ms', () => {
-    before(() => cache.defaults.timeout = 250);
+    before(() => (cache.defaults.timeout = 250));
 
     it('receives the value', async () => {
       const value = await Bluebird.race([

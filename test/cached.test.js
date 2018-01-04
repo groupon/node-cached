@@ -5,8 +5,7 @@ import cached from '..';
 describe('cached', () => {
   beforeEach(() => cached.dropNamedCaches());
 
-  it('is a function', () =>
-    assert.hasType(Function, cached));
+  it('is a function', () => assert.hasType(Function, cached));
 
   it('starts out with no known caches', () =>
     assert.deepEqual([], cached.knownCaches()));
