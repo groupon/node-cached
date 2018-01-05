@@ -25,8 +25,9 @@ describe('Cache::getOrElse', () => {
     }
 
     it('falls back on the value refresher', async () => {
-      const value =
-        await cache.getOrElse('bad_get', generateCats, { freshFor: 5 });
+      const value = await cache.getOrElse('bad_get', generateCats, {
+        freshFor: 5,
+      });
       assert.equal('fresh cats', value);
     });
   });
@@ -35,8 +36,7 @@ describe('Cache::getOrElse', () => {
     let cache;
     before(() => {
       cache = new Cache({ backend: 'memory', name: 'awesome-name' });
-      cache.set = () =>
-        Bluebird.reject(new Error('backend set troubles'));
+      cache.set = () => Bluebird.reject(new Error('backend set troubles'));
     });
 
     function generateBunnies() {
@@ -44,8 +44,9 @@ describe('Cache::getOrElse', () => {
     }
 
     it('falls back on the generated value', async () => {
-      const value =
-        await cache.getOrElse('bad_set', generateBunnies, { freshFor: 5 });
+      const value = await cache.getOrElse('bad_set', generateBunnies, {
+        freshFor: 5,
+      });
       assert.equal('generated bunnies', value);
     });
   });
@@ -73,8 +74,12 @@ describe('Cache::getOrElse', () => {
 
       // 4. The value is stale, so it should be calling the value generator.
       //    But it should *return* the original value asap.
-      assert.equal(originalValue,
-        await cache.getOrElse('key1', valueGenerator('G1', 100), { freshFor: 5 }));
+      assert.equal(
+        originalValue,
+        await cache.getOrElse('key1', valueGenerator('G1', 100), {
+          freshFor: 5,
+        })
+      );
 
       // Let the generator be generating...
       await Bluebird.delay(50);
@@ -82,16 +87,24 @@ describe('Cache::getOrElse', () => {
       // 5. Generating 'G1' in the last step takes 100ms but we only waited 50ms yet.
       //    This means we still expect to see the original value.
       //    'G2' should never be generated since there's already a pending value.
-      assert.equal(originalValue,
-        await cache.getOrElse('key1', valueGenerator('G2', 5000), { freshFor: 5 }));
+      assert.equal(
+        originalValue,
+        await cache.getOrElse('key1', valueGenerator('G2', 5000), {
+          freshFor: 5,
+        })
+      );
 
       // Let the generator be generating...
       await Bluebird.delay(100);
 
       // 6. Now G1 is done generating (we waited a total of 150ms), so we shouldn't
       //    see the original value anymore but the new, improved 'G1'.
-      assert.equal('G1',
-        await cache.getOrElse('key1', valueGenerator('G3', 5000), { freshFor: 5 }));
+      assert.equal(
+        'G1',
+        await cache.getOrElse('key1', valueGenerator('G3', 5000), {
+          freshFor: 5,
+        })
+      );
 
       // 7. Making sure that the value generator was only called once during this test.
       //    We just generated 'G1', the other times we either had a pending value
@@ -105,7 +118,8 @@ describe('Cache::getOrElse', () => {
       }
 
       const error = await assertRejects(
-        cache.getOrElse('bad_keys', errorGenerator, { freshFor: 1 }));
+        cache.getOrElse('bad_keys', errorGenerator, { freshFor: 1 })
+      );
       assert.equal('Big Error', error.message);
     });
 
@@ -114,7 +128,8 @@ describe('Cache::getOrElse', () => {
       const value = 'refresh-value';
 
       before('set value that is stale after a second', () =>
-        cache.set(key, value, { freshFor: 1, expire: 3 }));
+        cache.set(key, value, { freshFor: 1, expire: 3 })
+      );
 
       before('wait >1 seconds', () => Bluebird.delay(1100));
 
