@@ -1,3 +1,9 @@
+### 4.3.2
+
+* Apply latest nlm generator - **[@markowsiak](https://github.com/markowsiak)** [#38](https://github.com/groupon/node-cached/pull/38)
+  - [`35b216e`](https://github.com/groupon/node-cached/commit/35b216e3d11b94502d968d40fcf7f34e7a5b507e) **chore:** Apply latest nlm generator
+
+
 ### 4.3.1
 
 * docs: Clarify that timeout applies to unset - **[@Zanadar](https://github.com/Zanadar)** [#36](https://github.com/groupon/node-cached/pull/36)
