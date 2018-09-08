@@ -1,6 +1,6 @@
 import assert from 'assertive';
 import Bluebird from 'bluebird';
-import { identity } from 'lodash';
+const identity = val => val;
 
 import Cache from '../lib/cache';
 

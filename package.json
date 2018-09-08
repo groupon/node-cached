@@ -27,8 +27,7 @@
   },
   "dependencies": {
     "bluebird": "^3.3.3",
-    "lodash": "^4.6.1",
-    "memcached": "^2.1.0"
+    "memcached": "^2.2.2"
   },
   "devDependencies": {
     "assertive": "^2.1.0",
@@ -41,8 +40,8 @@
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-node": "^5.2.1",
     "eslint-plugin-prettier": "^2.2.0",
-    "mocha": "^3.1.2",
-    "nlm": "^3.0.0",
+    "mocha": "^5.2.0",
+    "nlm": "^3.3.1",
     "prettier": "^1.6.1"
   },
   "author": {
