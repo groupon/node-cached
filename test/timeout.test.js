@@ -1,8 +1,11 @@
-import assert from 'assertive';
-import Bluebird from 'bluebird';
+'use strict';
+
+const assert = require('assertive');
+const Bluebird = require('bluebird');
+
 const identity = val => val;
 
-import Cache from '../lib/cache';
+const Cache = require('../lib/cache');
 
 describe('Cache timeouts', () => {
   const cache = new Cache({

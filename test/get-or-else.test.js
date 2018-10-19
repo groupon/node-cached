@@ -1,9 +1,10 @@
-import assert from 'assertive';
-import Bluebird from 'bluebird';
+'use strict';
 
-import Cache from '../lib/cache';
+const assert = require('assertive');
+const Bluebird = require('bluebird');
 
-import withBackends from './_backends';
+const Cache = require('../lib/cache');
+const withBackends = require('./_backends');
 
 function assertRejects(promise) {
   return promise.then(() => {

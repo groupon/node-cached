@@ -1,3 +1,3 @@
 {
-  "extends": "groupon/node6"
+  "extends": "groupon/node8"
 }

@@ -1,5 +1,7 @@
+'use strict';
+
 /* eslint no-console:0 */
-import Bluebird from 'bluebird';
+const Bluebird = require('bluebird');
 
 const unhandledRejections = [];
 Bluebird.onPossiblyUnhandledRejection(error => {

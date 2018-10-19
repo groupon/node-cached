@@ -1,12 +1,5 @@
 {
   "env": {
     "mocha": true
-  },
-  "parser": "babel-eslint",
-  "parserOptions": {
-    "sourceType": "module",
-    "allowImportExportEverywhere": true,
-    "codeFrame": false
-  },
-  "root": true
+  }
 }
