@@ -10,3 +10,5 @@ deploy:
       branch: master
       node: 10.5.0
 services: memcached
+before_install:
+  - npm i -g npm@^6
