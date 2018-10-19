@@ -18,8 +18,9 @@ describe('Cache::{get,set,unset}', () => {
           } catch (error) {
             assertError = error;
           }
-          done(assertError);
+          return done(assertError);
         });
+        return null;
       });
     });
 
@@ -41,9 +42,11 @@ describe('Cache::{get,set,unset}', () => {
             } catch (error) {
               assertError = error;
             }
-            done(assertError);
+            return done(assertError);
           });
+          return null;
         });
+        return null;
       });
     });
 
