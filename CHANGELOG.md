@@ -1,3 +1,22 @@
+### 5.0.0
+
+#### Breaking Changes
+
+drops support for Node 6, which is a current LTS release.
+
+*See: [`f4ba4c9`](https://github.com/groupon/node-cached/commit/f4ba4c988b5d5db0cf07edfe9f0013d5fada075f)*
+
+#### Commits
+
+* feat: drop node4 support - **[@aaarichter](https://github.com/aaarichter)** [#39](https://github.com/groupon/node-cached/pull/39)
+  - [`29b26fa`](https://github.com/groupon/node-cached/commit/29b26fa240033cd7b5409407ea42b375a29c4c33) **feat:** drop node4 support
+  - [`23dcc6a`](https://github.com/groupon/node-cached/commit/23dcc6aa409f82be5485f3041948a9cdd1c1755e) **chore:** feedback addressed
+* Drop Node 6 support, and Babel as a result - **[@markowsiak](https://github.com/markowsiak)** [#40](https://github.com/groupon/node-cached/pull/40)
+  - [`2339fd1`](https://github.com/groupon/node-cached/commit/2339fd1d2064e6bab3f21fce0ca68af3916be129) **chore:** npm audit, drop babel
+  - [`f4ba4c9`](https://github.com/groupon/node-cached/commit/f4ba4c988b5d5db0cf07edfe9f0013d5fada075f) **chore:** drop support for node 6, keep async/await in test
+  - [`fe943d8`](https://github.com/groupon/node-cached/commit/fe943d8b7b34c7d4439e674cacc675699e3ba98e) **chore:** use npm 6 in travis
+
+
 ### 4.3.2
 
 * Apply latest nlm generator - **[@markowsiak](https://github.com/markowsiak)** [#38](https://github.com/groupon/node-cached/pull/38)
