@@ -1,12 +1,14 @@
-import { defaults } from 'lodash';
+'use strict';
 
-import Cache from '../lib/cache';
+const { defaults } = require('lodash');
+
+const Cache = require('../lib/cache');
 
 const backendOptions = {
   hosts: `${process.env.MEMCACHED__HOST || '127.0.0.1'}:11211`,
 };
 
-export default function withBackends(createTestCases) {
+module.exports = function withBackends(createTestCases) {
   ['memory', 'memcached'].forEach(backendType => {
     describe(`with backend "${backendType}"`, () => {
       const cache = new Cache({
@@ -19,4 +21,4 @@ export default function withBackends(createTestCases) {
       createTestCases(cache);
     });
   });
-}
+};

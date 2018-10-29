@@ -1,6 +1,8 @@
-import assert from 'assertive';
+'use strict';
 
-import Cache from '../lib/cache';
+const assert = require('assertive');
+
+const Cache = require('../lib/cache');
 
 describe('Cache', () => {
   it('always has a backend', () => {

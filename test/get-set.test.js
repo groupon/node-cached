@@ -1,7 +1,9 @@
-import assert from 'assertive';
-import Bluebird from 'bluebird';
+'use strict';
 
-import withBackends from './_backends';
+const assert = require('assertive');
+const Bluebird = require('bluebird');
+
+const withBackends = require('./_backends');
 
 describe('Cache::{get,set,unset}', () => {
   withBackends(cache => {
@@ -16,8 +18,9 @@ describe('Cache::{get,set,unset}', () => {
           } catch (error) {
             assertError = error;
           }
-          done(assertError);
+          return done(assertError);
         });
+        return null;
       });
     });
 
@@ -39,9 +42,11 @@ describe('Cache::{get,set,unset}', () => {
             } catch (error) {
               assertError = error;
             }
-            done(assertError);
+            return done(assertError);
           });
+          return null;
         });
+        return null;
       });
     });
 

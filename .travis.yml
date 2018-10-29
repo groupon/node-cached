@@ -1,8 +1,7 @@
 language: node_js
 node_js:
-  - v6.14.3
-  - v8.11.3
-  - v10.5.0
+  - 8.11.3
+  - 10.5.0
 deploy:
   - provider: script
     script: ./node_modules/.bin/nlm release
@@ -11,3 +10,5 @@ deploy:
       branch: master
       node: 10.5.0
 services: memcached
+before_install:
+  - npm i -g npm@^6

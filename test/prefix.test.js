@@ -1,6 +1,8 @@
-import assert from 'assertive';
+'use strict';
 
-import cached from '..';
+const assert = require('assertive');
+
+const cached = require('..');
 
 describe('cache prefix', () => {
   it('adds a prefix to named cached', async () => {
