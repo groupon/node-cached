@@ -1,3 +1,9 @@
+### 5.0.1
+
+* chore: Remove yarn check that breaks people - **[@jkrems](https://github.com/jkrems)** [#42](https://github.com/groupon/node-cached/pull/42)
+  - [`147a7f3`](https://github.com/groupon/node-cached/commit/147a7f3e1a5dd1a3690e134facf077b3b3329edf) **chore:** Remove yarn check that breaks people
+
+
 ### 5.0.0
 
 #### Breaking Changes
