@@ -13,11 +13,17 @@
     "url": "https://github.com/groupon/node-cached/issues"
   },
   "scripts": {
-    "pretest": "eslint lib test",
-    "test": "mocha",
-    "posttest": "nlm verify"
+    "lint": "npm-run-all lint:*",
+    "lint:js": "eslint .",
+    "pretest": "npm-run-all pretest:*",
+    "test": "npm-run-all test:*",
+    "posttest": "npm-run-all posttest:*",
+    "pretest:lint": "npm-run-all lint:*",
+    "posttest:nlm": "nlm verify",
+    "test:unit": "mocha"
   },
   "engines": {
+    "node": ">=8.3.0",
     "npm": "^6.0.0"
   },
   "nlm": {
@@ -33,16 +39,17 @@
   },
   "devDependencies": {
     "assertive": "^2.1.0",
-    "eslint": "^4.7.1",
-    "eslint-config-groupon": "^6.0.0",
-    "eslint-plugin-import": "^2.8.0",
-    "eslint-plugin-mocha": "^4.12.1",
-    "eslint-plugin-node": "^5.1.1",
-    "eslint-plugin-prettier": "^2.2.0",
+    "eslint": "^6.6.0",
+    "eslint-config-groupon": "^8.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-mocha": "^6.1.0",
+    "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-prettier": "^3.1.0",
     "lodash": "^4.17.11",
-    "mocha": "^5.2.0",
-    "nlm": "^3.3.4",
-    "prettier": "^1.6.1"
+    "mocha": "^6.2.0",
+    "nlm": "^3.6.1",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^1.18.2"
   },
   "author": {
     "name": "Groupon",
