@@ -1,5 +1,7 @@
 'use strict';
 
+/* eslint-env mocha */
+
 const { defaults } = require('lodash');
 
 const Cache = require('../lib/cache');

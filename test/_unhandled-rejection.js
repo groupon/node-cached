@@ -1,6 +1,8 @@
 'use strict';
 
 /* eslint no-console:0 */
+/* eslint-env mocha */
+
 const Bluebird = require('bluebird');
 
 const unhandledRejections = [];

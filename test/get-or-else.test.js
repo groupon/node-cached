@@ -7,9 +7,12 @@ const Cache = require('../lib/cache');
 const withBackends = require('./_backends');
 
 function assertRejects(promise) {
-  return promise.then(() => {
-    throw new Error('Did not fail as expected');
-  }, error => error);
+  return promise.then(
+    () => {
+      throw new Error('Did not fail as expected');
+    },
+    error => error
+  );
 }
 
 describe('Cache::getOrElse', () => {
