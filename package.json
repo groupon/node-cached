@@ -1,6 +1,6 @@
 {
   "name": "cached",
-  "version": "5.0.1",
+  "version": "5.0.2",
   "description": "Simple access to a cache",
   "license": "BSD-3-Clause",
   "main": "lib/cached.js",

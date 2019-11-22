@@ -1,3 +1,11 @@
+### 5.0.2
+
+* misc updates - **[@dbushong](https://github.com/dbushong)** [#46](https://github.com/groupon/node-cached/pull/46)
+  - [`25732ff`](https://github.com/groupon/node-cached/commit/25732ffaf461edddb9c03db28bb3c6b4f8d91342) **chore:** run updater
+  - [`eb5db4e`](https://github.com/groupon/node-cached/commit/eb5db4e64de5e6472de68c9e18cd9b3d05e066d3) **chore:** lint fixes
+  - [`e301ea9`](https://github.com/groupon/node-cached/commit/e301ea90eb56b2ce143fc394eea869538f3a3716) **chore:** npm audit fix
+
+
 ### 5.0.1
 
 * chore: Remove yarn check that breaks people - **[@jkrems](https://github.com/jkrems)** [#42](https://github.com/groupon/node-cached/pull/42)
