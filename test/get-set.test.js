@@ -1,59 +1,46 @@
 'use strict';
 
-const assert = require('assertive');
-const Bluebird = require('bluebird');
+const assert = require('assert');
 
 const withBackends = require('./_backends');
+const { delay } = require('./_helper');
 
 describe('Cache::{get,set,unset}', () => {
-  withBackends(cache => {
-    it('get/set (callback style)', done => {
-      cache.set('callback-key', 'callback-value', setError => {
-        if (setError) return done(setError);
-        cache.get('callback-key', (getError, value) => {
-          if (getError) return done(getError);
-          let assertError = null;
-          try {
-            assert.equal('callback-value', value);
-          } catch (error) {
-            assertError = error;
-          }
-          return done(assertError);
-        });
-        return null;
-      });
+  withBackends(['memory', 'memcached'], cache => {
+    it('get(), set() and unset() return a promise', async () => {
+      for (const fn of ['get', 'set', 'unset'])
+        assert.ok(cache[fn]() instanceof Promise);
     });
 
-    it('get/set (promise style)', async () => {
-      await cache.set('promise-key', 'promise-value', { expire: 1 });
-      assert.equal('promise-value', await cache.get('promise-key'));
+    it('get/set as promise', async () => {
+      const testCases = [
+        'promise-value',
+        function normalFn() {
+          return 'promise-value';
+        },
+        async function asyncFn() {
+          return 'promise-value';
+        },
+        function fnWithPromiseReturn() {
+          return Promise.resolve('promise-value');
+        },
+      ];
+
+      for (const value of testCases) {
+        const key = value.name || value;
+
+        await cache.unset(key);
+        await cache.set(key, value, { expire: 0 });
+
+        assert.strictEqual(await cache.get(key), 'promise-value', key);
+      }
     });
 
-    it('set/unset (callback style', done => {
-      cache.set('callback-key', 'callback-value', setError => {
-        if (setError) return done(setError);
-        cache.unset('callback-key', unsetError => {
-          if (unsetError) return done(unsetError);
-          cache.get('callback-key', (getError, value) => {
-            if (getError) return done(getError);
-            let assertError = null;
-            try {
-              assert.equal(null, value);
-            } catch (error) {
-              assertError = error;
-            }
-            return done(assertError);
-          });
-          return null;
-        });
-        return null;
-      });
-    });
-
-    it('set/unset (promise style)', async () => {
+    it('set/unset as promise', async () => {
       await cache.set('promise-key', 'promise-value', { expire: 1 });
       await cache.unset('promise-key');
-      assert.equal(null, await cache.get('promise-key'));
+
+      assert.strictEqual(await cache.get('promise-key'), null);
     });
 
     it('honors expires', async () => {
@@ -63,22 +50,37 @@ describe('Cache::{get,set,unset}', () => {
         key3: 'Value 3',
       };
 
-      await Bluebird.all([
+      await Promise.all([
         cache.set('key1', values.key1, { expire: 1 }),
         cache.set('key2', values.key2, { expire: 0 }),
         cache.set('key3', values.key3, { expire: 4 }),
       ]);
 
-      await Bluebird.delay(2000);
+      await delay(2000);
 
-      const [expired, eternal, hit] = await Bluebird.map(
-        ['key', 'key2', 'key3'],
-        key => cache.get(key)
+      const [expired, eternal, hit] = await Promise.all(
+        ['key', 'key2', 'key3'].map(key => cache.get(key))
       );
 
-      assert.equal(null, expired);
-      assert.equal(values.key2, eternal);
-      assert.equal(values.key3, hit);
+      assert.strictEqual(expired, null);
+      assert.strictEqual(eternal, values.key2);
+      assert.strictEqual(hit, values.key3);
+    });
+  });
+
+  withBackends(['noop'], cache => {
+    // eslint-disable-next-line mocha/no-identical-title
+    it('get(), set() and unset() return a promise', async () => {
+      for (const fn of ['get', 'set', 'unset'])
+        assert.ok(cache[fn]() instanceof Promise);
+    });
+
+    it('get() will always return null', async () => {
+      await cache.set('foo', 'bar');
+
+      const res = await cache.get('foo');
+
+      assert.strictEqual(res, null);
     });
   });
 });
