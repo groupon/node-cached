@@ -32,9 +32,6 @@ async function cacheKittens() {
     return cache.get('other.key');
   });
   
-  // Set a key using a value)
-  await kittens.set('my.key', 'kitty');
-  
   // Set a key using a callback-style function
   await kittens.set('my.key', cached.deferred(done => {
     done(null, 'Hello World');
@@ -47,10 +44,12 @@ async function cacheKittens() {
   });
   
   // Handle it the promise way
-  const data2 = await kittens.get('my.key').catch(err => {
-      throw err;
-    }
-  );
+  let res;
+  try {
+    res = await kittens.get('my.key')
+  } catch (e) {
+    /* ... */
+  }
 }
 ```
 
