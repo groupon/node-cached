@@ -55,6 +55,13 @@ async function cacheKittens() {
 
 ## Supported backends
 
+### Memory
+
+Stores all the data in an in-memory object. This backend is set as default.
+
+*__Caveat:__ `get()` will return a reference to the stored value. Mutating the returned value will affect the
+value in the cache.*
+
 ### Memcached
 
 A thin wrapper around [memcached-elasticache](https://github.com/jkehres/memcached-elasticache).
@@ -84,12 +91,6 @@ cached('myStuff', { backend: {
 }});
 ```
 
-### Memory
-
-Stores all the data in an in-memory object. 
-*__Caveat:__ `get()` will return a reference to the stored value. Mutating the returned value will affect the 
-value in the cache.*
-
 #### Example
 
 ```js
@@ -97,24 +98,6 @@ cached('myStuff', { backend: {
   type: 'memory',
 }});
 ```
-
-### Noop
-
-Doesn't store data at all. All `set` operations succeed and `get` operations behave as if the value were not 
-found in the cache.
-
-#### Examples
-
-```js
-cached('myStuff', { backend: {
-  type: 'noop',
-}});
-```
-
-```js
-cached('myStuff');
-```
-
 
 ## API
 

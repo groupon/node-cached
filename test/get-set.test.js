@@ -67,20 +67,4 @@ describe('Cache::{get,set,unset}', () => {
       assert.strictEqual(hit, values.key3);
     });
   });
-
-  withBackends(['noop'], cache => {
-    // eslint-disable-next-line mocha/no-identical-title
-    it('get(), set() and unset() return a promise', async () => {
-      for (const fn of ['get', 'set', 'unset'])
-        assert.ok(cache[fn]() instanceof Promise);
-    });
-
-    it('get() will always return null', async () => {
-      await cache.set('foo', 'bar');
-
-      const res = await cache.get('foo');
-
-      assert.strictEqual(res, null);
-    });
-  });
 });

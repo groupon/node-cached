@@ -13,10 +13,10 @@ describe('Cache', () => {
     assert.ok(cache.backend);
   });
 
-  it('has a "noop" backend by default', () => {
+  it('has a "memory" backend by default', () => {
     const cache = new Cache({});
 
-    assert.strictEqual(cache.backend.type, 'noop');
+    assert.strictEqual(cache.backend.type, 'memory');
   });
 
   it('throws for unknown backend', () => {
