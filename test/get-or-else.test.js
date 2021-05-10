@@ -132,7 +132,6 @@ describe('Cache::getOrElse', () => {
             for (const val of testCases) {
               const key = `${val != null ? JSON.stringify(val) : val}`;
 
-              await cache.unset(key);
               const res = await cache.getOrElse(key, val, {
                 freshFor: 1,
               });
@@ -157,7 +156,6 @@ describe('Cache::getOrElse', () => {
             for (const fn of testCases) {
               const key = fn.name;
 
-              await cache.unset(key);
               const res = await cache.getOrElse(key, fn, {
                 freshFor: 0,
               });
@@ -169,7 +167,6 @@ describe('Cache::getOrElse', () => {
           it('converts "undefined" values to null', async () => {
             const key = 'undefined';
 
-            await cache.unset(key);
             const res = await cache.getOrElse(key, undefined, {
               freshFor: 1,
             });

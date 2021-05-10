@@ -29,7 +29,6 @@ describe('Cache::{get,set,unset}', () => {
       for (const value of testCases) {
         const key = value.name || value;
 
-        await cache.unset(key);
         await cache.set(key, value, { expire: 0 });
 
         assert.strictEqual(await cache.get(key), 'promise-value', key);
@@ -54,7 +53,7 @@ describe('Cache::{get,set,unset}', () => {
         key3: 'Value 3',
       };
 
-      await Promise.all(['key1', 'key2', 'key3'].map(key => cache.unset(key)));
+      await cache.flush();
 
       await Promise.all([
         cache.set('key1', values.key1, { expire: 1 }),

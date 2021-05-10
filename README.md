@@ -1,3 +1,4 @@
+[![Publish to NPM](https://github.com/groupon/node-cached/actions/workflows/npm-publish.yml/badge.svg?event=push)](https://github.com/groupon/node-cached/actions/workflows/npm-publish.yml)
 # cached
 
 A simple caching library, inspired by the [Play cache API](http://www.playframework.com/documentation/2.2.x/ScalaCache) 
@@ -230,6 +231,15 @@ await cache.set('foo', () => { return Promise.resolve('bar') });
 
 // with a promise function
 await cache.set('foo', async () => { return 'bar' });
+```
+
+### Cache.flush() -> Promise\<void\>
+
+Flushes backend.
+
+**Example:**
+```js
+await cache.flush()
 ```
 
 ### Cache.unset(key) -> Promise\<void\>
