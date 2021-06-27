@@ -3,12 +3,10 @@
 /* eslint no-console:0 */
 /* eslint-env mocha */
 
-const Bluebird = require('bluebird');
-
 const unhandledRejections = [];
-Bluebird.onPossiblyUnhandledRejection(error => {
-  console.error('Possibly unhandled rejection:', error.stack);
-  unhandledRejections.push(error);
+process.on('unhandledRejection', reason => {
+  console.error('Possibly unhandled rejection:', reason.stack);
+  unhandledRejections.push(reason);
 });
 
 after('Check for unhandled rejections', () => {

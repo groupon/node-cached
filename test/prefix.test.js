@@ -1,6 +1,6 @@
 'use strict';
 
-const assert = require('assertive');
+const assert = require('assert');
 
 const cached = require('..');
 
@@ -17,7 +17,7 @@ describe('cache prefix', () => {
     await cacheA.set('key', aValue);
     await cacheB.set('key', bValue);
 
-    assert.equal(aValue, await cacheA.get('key'));
-    assert.equal(bValue, await cacheB.get('key'));
+    assert.strictEqual(await cacheA.get('key'), aValue);
+    assert.strictEqual(await cacheB.get('key'), bValue);
   });
 });
