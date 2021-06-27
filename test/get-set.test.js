@@ -5,8 +5,10 @@ const assert = require('assert');
 const withBackends = require('./_backends');
 const { delay } = require('./_helper');
 
+const backends = ['redis', 'memory', 'memcached'];
+
 describe('Cache::{get,set,unset}', () => {
-  withBackends(['memory', 'memcached'], cache => {
+  withBackends(backends, cache => {
     it('get(), set() and unset() return a promise', async () => {
       for (const fn of ['get', 'set', 'unset'])
         assert.ok(cache[fn]() instanceof Promise);

@@ -51,6 +51,7 @@ describe('Cache::getOrElse', () => {
     withBackends(
       [
         // 'memory',
+        'redis',
         'memcached',
       ],
       cache => {

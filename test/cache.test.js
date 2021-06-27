@@ -3,6 +3,7 @@
 const assert = require('assert');
 
 const Memcached = require('memcached-elasticache');
+const redis = require('redis');
 
 const Cache = require('../lib/cache');
 
@@ -36,6 +37,23 @@ describe('Cache', () => {
       const cache = new Cache(options);
 
       assert.ok(cache.backend.client instanceof Memcached);
+    });
+
+    it('allows redis instance to be passed with the backend options', () => {
+      const options = {
+        name: 'my-redis',
+        backend: {
+          type: 'redis',
+          client: redis.createClient({
+            host: '127.0.0.1',
+            port: '6379',
+          }),
+        },
+      };
+
+      const cache = new Cache(options);
+
+      assert.ok(cache.backend.client instanceof redis.RedisClient);
     });
 
     it('creates new memcached instance if passed client is not instance of Memcached', () => {
