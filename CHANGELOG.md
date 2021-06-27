@@ -1,3 +1,42 @@
+### v6.0.0 (2021-06-27)
+<a id="v6.0.0"></a>
+#### 💥 Breaking Changes
+
+[#48](https://github.com/groupon/node-cached/pull/48) refactor: rewrite, use memcached-elasticache & drop Node 8 ([@aaarichter](https://github.com/aaarichter))
+
+- Dropped Node 8.x. Use Node 10.13 or higher.
+- Uses `memcached-elasticache` with AWS support instead of `memcached`. See https://github.com/jkehres/memcached-elasticache#readme
+- API functions no longer support callbacks.
+- API functions use native Promises instead of `Bluebird`.
+- `cached()` needs to be called with a string argument as name. If the `name` argument is undefined, it will fallback to `"default"`.
+
+- `Cache.setBackend()` no longer returns the created backend.
+- `Cache.getWrapped()` is removed.
+- Cache backend APIs need to be promise based.
+- Cache private function have been renamed.
+- The following function are now private:
+  - `Cache.applyPrefix`
+  - `Cache.end`
+  - `Cache.prepareOptions`
+  - `Cache.setBackend`
+
+- `cache.set()`, `cache.get()`, `cache.getOrElse()`, `cache.unset()` no longer support the callback argument. Use them as promise.
+- `cache.set()` no longer returns a value.
+- `cache.set(key, value)` accepts functions and promises as value.
+
+- Any client passed with the memcached backend options has to be an instance of `Memcached`.
+- Backend setters no longer return a value.
+- backend `addType()` does not return backend class anymore.
+
+#### 📦️ Code Refactoring
+
+* [#48](https://github.com/groupon/node-cached/pull/48) refactor: rewrite, use memcached-elasticache & drop Node 8 ([@aaarichter](https://github.com/aaarichter))
+
+#### 🏡 Internal
+
+* [#59](https://github.com/groupon/node-cached/pull/59) ci(actions): adding GitHub actions ([@aaarichter](https://github.com/aaarichter))
+
+
 ### 5.0.2
 
 * misc updates - **[@dbushong](https://github.com/dbushong)** [#46](https://github.com/groupon/node-cached/pull/46)

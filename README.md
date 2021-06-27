@@ -1,3 +1,6 @@
+[![nlm-github](https://img.shields.io/badge/github-groupon%2Fnode--cached%2Fissues-F4D03F?logo=github&logoColor=white)](https://github.com/groupon/node-cached/issues)
+![nlm-node](https://img.shields.io/badge/node-%3E%3D10.13.0-blue?logo=node.js&logoColor=white)
+![nlm-version](https://img.shields.io/badge/version-6.0.0-blue?logo=version&logoColor=white)
 [![Publish to NPM](https://github.com/groupon/node-cached/actions/workflows/npm-publish.yml/badge.svg?event=push)](https://github.com/groupon/node-cached/actions/workflows/npm-publish.yml)
 # cached
 
