@@ -38,21 +38,23 @@
     }
   },
   "dependencies": {
-    "memcached-elasticache": "^1.1.1"
+    "memcached-elasticache": "^1.1.1",
+    "redis": "^3.1.2"
   },
   "devDependencies": {
     "@types/memcached": "^2.2.6",
+    "@types/redis": "^2.8.30",
     "c8": "^7.7.3",
-    "eslint": "^7.28.0",
+    "eslint": "^7.29.0",
     "eslint-config-groupon": "^10.0.4",
     "eslint-plugin-import": "^2.23.4",
     "eslint-plugin-mocha": "^9.0.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^3.4.0",
-    "mocha": "^9.0.0",
+    "mocha": "^9.0.1",
     "nlm": "^5.5.1",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.3.1"
+    "prettier": "^2.3.2"
   },
   "author": {
     "name": "Groupon",
