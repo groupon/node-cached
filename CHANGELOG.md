@@ -1,3 +1,10 @@
+### v6.1.0 (2021-06-29)
+<a id="v6.1.0"></a>
+#### 🚀 New Features
+
+* [#62](https://github.com/groupon/node-cached/pull/62) feat: add redis backend ([@aaarichter](https://github.com/aaarichter))
+
+
 ### v6.0.0 (2021-06-27)
 <a id="v6.0.0"></a>
 #### 💥 Breaking Changes
